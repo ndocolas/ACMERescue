@@ -131,6 +131,13 @@ public class ACMERescue {
         return retorno = (retorno.equals("Atendimentos: \n")) ? "Nenhum atendimento cadastrado" : retorno;
     }
 
+    public Atendimento pesquisarCodigoAtendimento(int codigo) {
+        for (Atendimento atendimento : listaAtendimento) {
+            if(codigo == atendimento.getCodinome()) return atendimento;
+        }
+        return null;
+    }
+
     public void alocacaoAutomatica() {
         List<Equipe> listaEquipesDisponiveis =
          listaEquipe.stream()

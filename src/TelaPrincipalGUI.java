@@ -21,6 +21,7 @@ public class TelaPrincipalGUI extends javax.swing.JFrame {
     private ACMERescue acmeRescue;
     private String listaEventoAtendimento = "";
     private String listaEquipamentosDisponiveis = "";
+    private String listaAtendimentosDisponiveis = "";
     
     public TelaPrincipalGUI() {
         super();
@@ -39,7 +40,7 @@ public class TelaPrincipalGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel37 = new javax.swing.JLabel();
+        buttonGroup = new javax.swing.ButtonGroup();
         jPanelTela = new javax.swing.JPanel();
         jlbCabecalhoInicio = new javax.swing.JLabel();
         jpAtendimento = new javax.swing.JTabbedPane();
@@ -166,17 +167,18 @@ public class TelaPrincipalGUI extends javax.swing.JFrame {
         jbtAlocacaoAutomatica = new javax.swing.JButton();
         jLabel39 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jtaListaEquipamentosDisponiveis1 = new javax.swing.JTextArea();
+        jtaListaAtendimentosDisponiveis = new javax.swing.JTextArea();
         jLabel40 = new javax.swing.JLabel();
-        jcbPeendente = new javax.swing.JCheckBox();
-        jcbExecutando = new javax.swing.JCheckBox();
-        jcbFinalizado = new javax.swing.JCheckBox();
-        jcbCancelado = new javax.swing.JCheckBox();
         jLabel41 = new javax.swing.JLabel();
-        jtfAlterarStatusAtendimento = new javax.swing.JTextField();
+        jtfSelecionarAtendimento = new javax.swing.JTextField();
         jbtStatusConfirmar = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jtaAtendimentoSelcionado = new javax.swing.JTextArea();
+        jbtSelecionarAtendimento = new javax.swing.JButton();
+        jrbPendente = new javax.swing.JRadioButton();
+        jrbExecutando = new javax.swing.JRadioButton();
+        jrbFinalizado = new javax.swing.JRadioButton();
+        jrbCancelado = new javax.swing.JRadioButton();
         jpOutro = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jpInfosGerais = new javax.swing.JPanel();
@@ -189,9 +191,6 @@ public class TelaPrincipalGUI extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jtaSystemOut = new javax.swing.JTextArea();
         jbtSairTelaPrincipal = new javax.swing.JButton();
-
-        jLabel37.setText("jLabel37");
-        jLabel37.setName("jLabel37"); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Trabalho Final - Nicolas Docolas");
@@ -1194,50 +1193,69 @@ public class TelaPrincipalGUI extends javax.swing.JFrame {
 
         jScrollPane5.setName("jScrollPane5"); // NOI18N
 
-        jtaListaEquipamentosDisponiveis1.setEditable(false);
-        jtaListaEquipamentosDisponiveis1.setColumns(3);
-        jtaListaEquipamentosDisponiveis1.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
-        jtaListaEquipamentosDisponiveis1.setRows(3);
-        jtaListaEquipamentosDisponiveis1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jtaListaEquipamentosDisponiveis1.setDragEnabled(true);
-        jtaListaEquipamentosDisponiveis1.setName("jtaListaEquipamentosDisponiveis1"); // NOI18N
-        jScrollPane5.setViewportView(jtaListaEquipamentosDisponiveis1);
+        jtaListaAtendimentosDisponiveis.setEditable(false);
+        jtaListaAtendimentosDisponiveis.setColumns(3);
+        jtaListaAtendimentosDisponiveis.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        jtaListaAtendimentosDisponiveis.setRows(3);
+        jtaListaAtendimentosDisponiveis.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jtaListaAtendimentosDisponiveis.setDragEnabled(true);
+        jtaListaAtendimentosDisponiveis.setName("jtaListaAtendimentosDisponiveis"); // NOI18N
+        jScrollPane5.setViewportView(jtaListaAtendimentosDisponiveis);
 
         jLabel40.setText("Atendimentos:");
         jLabel40.setName("jLabel40"); // NOI18N
 
-        jcbPeendente.setText("PEENDENTE");
-        jcbPeendente.setEnabled(false);
-        jcbPeendente.setName("jcbPeendente"); // NOI18N
-
-        jcbExecutando.setText("EXECUTANDO");
-        jcbExecutando.setEnabled(false);
-        jcbExecutando.setName("jcbExecutando"); // NOI18N
-
-        jcbFinalizado.setText("FINALIZADO");
-        jcbFinalizado.setEnabled(false);
-        jcbFinalizado.setName("jcbFinalizado"); // NOI18N
-
-        jcbCancelado.setText("CANCELADO");
-        jcbCancelado.setEnabled(false);
-        jcbCancelado.setName("jcbCancelado"); // NOI18N
-
         jLabel41.setText("Atendimento:");
         jLabel41.setName("jLabel41"); // NOI18N
 
-        jtfAlterarStatusAtendimento.setName("jtfAlterarStatusAtendimento"); // NOI18N
+        jtfSelecionarAtendimento.setName("jtfSelecionarAtendimento"); // NOI18N
 
         jbtStatusConfirmar.setText("Confirmar");
+        jbtStatusConfirmar.setEnabled(false);
         jbtStatusConfirmar.setName("jbtStatusConfirmar"); // NOI18N
+        jbtStatusConfirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtStatusConfirmarActionPerformed(evt);
+            }
+        });
 
         jScrollPane6.setName("jScrollPane6"); // NOI18N
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jTextArea1.setName("jTextArea1"); // NOI18N
-        jScrollPane6.setViewportView(jTextArea1);
+        jtaAtendimentoSelcionado.setEditable(false);
+        jtaAtendimentoSelcionado.setColumns(20);
+        jtaAtendimentoSelcionado.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        jtaAtendimentoSelcionado.setRows(5);
+        jtaAtendimentoSelcionado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jtaAtendimentoSelcionado.setName("jtaAtendimentoSelcionado"); // NOI18N
+        jScrollPane6.setViewportView(jtaAtendimentoSelcionado);
+
+        jbtSelecionarAtendimento.setText("Selecionar");
+        jbtSelecionarAtendimento.setName("jbtSelecionarAtendimento"); // NOI18N
+        jbtSelecionarAtendimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtSelecionarAtendimentoActionPerformed(evt);
+            }
+        });
+
+        buttonGroup.add(jrbPendente);
+        jrbPendente.setText("PENDENTE");
+        jrbPendente.setEnabled(false);
+        jrbPendente.setName("jrbPendente"); // NOI18N
+
+        buttonGroup.add(jrbExecutando);
+        jrbExecutando.setText("EXECUTANDO");
+        jrbExecutando.setEnabled(false);
+        jrbExecutando.setName("jrbExecutando"); // NOI18N
+
+        buttonGroup.add(jrbFinalizado);
+        jrbFinalizado.setText("FINALIZADO");
+        jrbFinalizado.setEnabled(false);
+        jrbFinalizado.setName("jrbFinalizado"); // NOI18N
+
+        buttonGroup.add(jrbCancelado);
+        jrbCancelado.setText("CANCELADO");
+        jrbCancelado.setEnabled(false);
+        jrbCancelado.setName("jrbCancelado"); // NOI18N
 
         javax.swing.GroupLayout jpConfigAtendimentoLayout = new javax.swing.GroupLayout(jpConfigAtendimento);
         jpConfigAtendimento.setLayout(jpConfigAtendimentoLayout);
@@ -1261,21 +1279,32 @@ public class TelaPrincipalGUI extends javax.swing.JFrame {
                             .addGroup(jpConfigAtendimentoLayout.createSequentialGroup()
                                 .addGap(39, 39, 39)
                                 .addComponent(jLabel40)))
-                        .addGap(16, 16, 16)
-                        .addGroup(jpConfigAtendimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jpConfigAtendimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jpConfigAtendimentoLayout.createSequentialGroup()
-                                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
-                                .addGap(18, 18, 18)
-                                .addGroup(jpConfigAtendimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jbtStatusConfirmar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jcbExecutando, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jcbPeendente)
-                                    .addComponent(jcbFinalizado)
-                                    .addComponent(jcbCancelado)))
-                            .addGroup(jpConfigAtendimentoLayout.createSequentialGroup()
+                                .addGap(16, 16, 16)
                                 .addComponent(jLabel41)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jtfAlterarStatusAtendimento)))))
+                                .addComponent(jtfSelecionarAtendimento, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE))
+                            .addGroup(jpConfigAtendimentoLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane6)))
+                        .addGroup(jpConfigAtendimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jpConfigAtendimentoLayout.createSequentialGroup()
+                                .addGroup(jpConfigAtendimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jpConfigAtendimentoLayout.createSequentialGroup()
+                                        .addGap(5, 5, 5)
+                                        .addComponent(jbtSelecionarAtendimento, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jpConfigAtendimentoLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(jpConfigAtendimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jrbExecutando)
+                                            .addComponent(jrbPendente)
+                                            .addComponent(jrbCancelado)
+                                            .addComponent(jrbFinalizado))))
+                                .addGap(1, 1, 1))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpConfigAtendimentoLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jbtStatusConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         jpConfigAtendimentoLayout.setVerticalGroup(
@@ -1284,27 +1313,24 @@ public class TelaPrincipalGUI extends javax.swing.JFrame {
                 .addGap(9, 9, 9)
                 .addGroup(jpConfigAtendimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel40)
-                    .addComponent(jtfAlterarStatusAtendimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel41))
+                    .addComponent(jtfSelecionarAtendimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel41)
+                    .addComponent(jbtSelecionarAtendimento))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpConfigAtendimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jpConfigAtendimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpConfigAtendimentoLayout.createSequentialGroup()
-                        .addGap(0, 7, Short.MAX_VALUE)
-                        .addComponent(jcbPeendente)
+                        .addComponent(jrbPendente)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jcbExecutando)
+                        .addComponent(jrbExecutando)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jcbFinalizado)
+                        .addComponent(jrbFinalizado)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jcbCancelado)
-                        .addGap(18, 18, 18)
-                        .addComponent(jbtStatusConfirmar)
-                        .addGap(8, 8, 8))
-                    .addGroup(jpConfigAtendimentoLayout.createSequentialGroup()
-                        .addGroup(jpConfigAtendimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jrbCancelado)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jbtStatusConfirmar))
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpConfigAtendimentoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1428,7 +1454,9 @@ public class TelaPrincipalGUI extends javax.swing.JFrame {
 
         jScrollPane1.setName("jScrollPane1"); // NOI18N
 
+        jtaSystemOut.setEditable(false);
         jtaSystemOut.setColumns(20);
+        jtaSystemOut.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         jtaSystemOut.setRows(5);
         jtaSystemOut.setName("jtaSystemOut"); // NOI18N
         jScrollPane1.setViewportView(jtaSystemOut);
@@ -1507,142 +1535,44 @@ public class TelaPrincipalGUI extends javax.swing.JFrame {
        System.exit(0);
     }//GEN-LAST:event_jbtSairTelaPrincipalActionPerformed
 
-    private void jbtCadastrarEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtCadastrarEquipeActionPerformed
-        if(jtfCodinomeEquipe.getText().equals("") ||
-                jtfQuantidadeEquipe.getText().equals("") ||
-                jtfLatitudeEquipe.getText().equals("") || 
-                jtfLongitudeEquipe.getText().equals("")) return;
-        Equipe equipe = null;
-        try{
-            equipe = new Equipe(jtfCodinomeEquipe.getText(),
-                    Integer.parseInt(jtfQuantidadeEquipe.getText()),
-                    Double.parseDouble(jtfLatitudeEquipe.getText()),
-                    Double.parseDouble(jtfLongitudeEquipe.getText()));
-        } catch (NumberFormatException e) {}
-        if(acmeRescue.adicionarEquipe(equipe)) {
-            jtaSystemOut.append("Equipe adicionada: " + equipe.getCodinome() + "\n");
-            jtaListaEquipesDisponiveis.append("- " + equipe.getCodinome() + "\n");
-        }
-        else jtaSystemOut.append("Falha ao adicionar equipe.\n");
-        jtfCodinomeEquipe.setText("");
-        jtfQuantidadeEquipe.setText("");
-        jtfLatitudeEquipe.setText("");
-        jtfLongitudeEquipe.setText("");
-    }//GEN-LAST:event_jbtCadastrarEquipeActionPerformed
+    private void jbtMostrarTodosAtendimentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtMostrarTodosAtendimentosActionPerformed
+        if (!jtaSystemOut.getText().contentEquals(acmeRescue.mostrarTodosAtendimentos())) jtaSystemOut.setText(acmeRescue.mostrarTodosAtendimentos());
+    }//GEN-LAST:event_jbtMostrarTodosAtendimentosActionPerformed
 
-    private void jbtListarEquipesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtListarEquipesActionPerformed
-        if(!jtaSystemOut.getText().contains(acmeRescue.mostrarTodasEquipes()))  jtaSystemOut.setText(acmeRescue.mostrarTodasEquipes());
-    }//GEN-LAST:event_jbtListarEquipesActionPerformed
+    private void jbtMostrarTodosEquipamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtMostrarTodosEquipamentosActionPerformed
+        if (!jtaSystemOut.getText().contentEquals(acmeRescue.mostrarTodosEquipamentos())) jtaSystemOut.setText(acmeRescue.mostrarTodosEquipamentos());
+    }//GEN-LAST:event_jbtMostrarTodosEquipamentosActionPerformed
 
-    private void jbtCadastraCicloneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtCadastraCicloneActionPerformed
-        if(jtfCodigoCiclone.getText().equals("") ||
-                jtfDataCiclone.getText().equals("")||
-                jtfLatitudeCiclone.getText().equals("") || 
-                jtfLongitudeCiclone.getText().equals("") ||
-                jtfVelocidadeCiclone.getText().equals("") ||
-                jtfPrecipitacaoCIclone.getText().equals("")) return;
-        Evento evento = null;
-        try {
-            evento = new Ciclone(jtfCodigoCiclone.getText(),
-            jtfDataCiclone.getText(),
-            Double.parseDouble(jtfLatitudeCiclone.getText()),
-            Double.parseDouble(jtfLongitudeCiclone.getText()),
-            Double.parseDouble(jtfVelocidadeCiclone.getText()),
-            Double.parseDouble(jtfPrecipitacaoCIclone.getText()));
-        } catch(NumberFormatException e) {}
-        if(acmeRescue.adicionarEvento(evento)) {
-            jtaSystemOut.append("Evento adicionado: " + evento.getCodigo() + "\n");
-            jtaListaEventoAtendimento.append("- " + evento.getCodigo()+ "\n");
-        }
-        else jtaSystemOut.append("\nFalha ao adicionar evento\n");
-        jtfCodigoCiclone.setText("");
-        jtfDataCiclone.setText("");
-        jtfLatitudeCiclone.setText("");
-        jtfLongitudeCiclone.setText("");
-        jtfVelocidadeCiclone.setText("");
-        jtfPrecipitacaoCIclone.setText("");
-    }//GEN-LAST:event_jbtCadastraCicloneActionPerformed
+    private void jbtMostrarTodasEquipesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtMostrarTodasEquipesActionPerformed
+        if (!jtaSystemOut.getText().contentEquals(acmeRescue.mostrarTodasEquipes())) jtaSystemOut.setText(acmeRescue.mostrarTodasEquipes());
+    }//GEN-LAST:event_jbtMostrarTodasEquipesActionPerformed
 
-    private void jbtListaCiclonesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtListaCiclonesActionPerformed
-        if(!jtaSystemOut.getText().contains(acmeRescue.mostrarTodosCiclones())) jtaSystemOut.setText(acmeRescue.mostrarTodosCiclones());
-    }//GEN-LAST:event_jbtListaCiclonesActionPerformed
+    private void jbtMostrarTodosEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtMostrarTodosEventosActionPerformed
+        if(!jtaSystemOut.getText().contentEquals(acmeRescue.mostrarTodosEventos())) jtaSystemOut.setText(acmeRescue.mostrarTodosEventos());
+    }//GEN-LAST:event_jbtMostrarTodosEventosActionPerformed
 
-    private void jbtCadastraTerremotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtCadastraTerremotoActionPerformed
-        if(jtfTerremotoCodigo.getText().isEmpty() ||
-                jtfTerremotoData.getText().isEmpty() ||
-            jtfTerremotoLongitude.getText().isEmpty() ||
-                    jtfTerremotoLatitude.getText().isEmpty() ||
-                    jtfTerremotoEscala.getText().isEmpty()) return;
-        Evento evento = null;
-        try {
-            evento = new Terremoto(jtfTerremotoCodigo.getText(),
-                    jtfTerremotoData.getText(),
-                    Double.parseDouble(jtfTerremotoLatitude.getText()),
-                    Double.parseDouble(jtfTerremotoLongitude.getText()),
-                    Double.parseDouble(jtfTerremotoEscala.getText()));
-        } catch(NumberFormatException e) {}
-        if(acmeRescue.adicionarEvento(evento)) {
-            jtaSystemOut.append("Evento adicionado: " + evento.getCodigo() + "\n");
-            jtaListaEventoAtendimento.append("- " + evento.getCodigo() + "\n");
-        }
-        else jtaSystemOut.append("\nFalha ao adicionar evento.\n");
-        jtfTerremotoCodigo.setText("");
-        jtfTerremotoData.setText("");
-        jtfTerremotoLatitude.setText("");
-        jtfTerremotoLongitude.setText("");
-        jtfTerremotoEscala.setText("");
-        
-    }//GEN-LAST:event_jbtCadastraTerremotoActionPerformed
-
-    private void jbtListaTerremotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtListaTerremotoActionPerformed
-        if(!jtaSystemOut.getText().contains(acmeRescue.mostrarTodosTerremotos())) jtaSystemOut.setText(acmeRescue.mostrarTodosTerremotos());
-    }//GEN-LAST:event_jbtListaTerremotoActionPerformed
-
-    private void jbtCadastrarSecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtCadastrarSecaActionPerformed
-        if(jtfSecaCodigo.getText().isEmpty() ||
-                jtfSecaData.getText().isEmpty() ||
-                jtfSecaLatitude.getText().isEmpty() ||
-                jtfSecaLongitude.getText().isEmpty() ||
-                jtfSecaEstiagem.getText().isEmpty()) return;
-        Evento evento = null;
-        try {
-            evento = new Seca(jtfSecaCodigo.getText(),
-            jtfSecaData.getText(),
-            Double.parseDouble(jtfSecaLatitude.getText()),
-            Double.parseDouble(jtfSecaLongitude.getText()),
-            Integer.parseInt(jtfSecaEstiagem.getText()));
-        } catch(NumberFormatException e) {}
-        if(acmeRescue.adicionarEvento(evento)) {
-            jtaSystemOut.append("Evento adicionado: " + evento.getCodigo() + "\n");
-            listaEventoAtendimento += "- " + evento.getCodigo() + "\n";
-            jtaListaEventoAtendimento.setText(listaEventoAtendimento);
-        }
-        else jtaSystemOut.append("Falha ao adicionar seca");
-        jtfSecaCodigo.setText("");
-        jtfSecaData.setText("");
-        jtfSecaLatitude.setText("");
-        jtfSecaLongitude.setText("");
-        jtfSecaEstiagem.setText("");
-    }//GEN-LAST:event_jbtCadastrarSecaActionPerformed
-
-    private void jbtListaSecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtListaSecaActionPerformed
-        if (!jtaSystemOut.getText().contains(acmeRescue.mostrarTodasSecas())) jtaSystemOut.setText(acmeRescue.mostrarTodasSecas());
-    }//GEN-LAST:event_jbtListaSecaActionPerformed
+    private void jbtMostrarRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtMostrarRelatorioActionPerformed
+        if(!jtaSystemOut.getText().contentEquals(acmeRescue.mostrarRelatorio())) jtaSystemOut.setText(acmeRescue.mostrarRelatorio());
+    }//GEN-LAST:event_jbtMostrarRelatorioActionPerformed
 
     private void jbtCadastraAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtCadastraAtendimentoActionPerformed
         if(jtfAtendimentoCodigo.getText().isEmpty() ||
-        jtfAtendimentoData.getText().isEmpty() ||
-        jtfAtendimentoDuracao.getText().isEmpty() ||
-        jtfAtendimentoEvento.getText().isEmpty()) return;
+            jtfAtendimentoData.getText().isEmpty() ||
+            jtfAtendimentoDuracao.getText().isEmpty() ||
+            jtfAtendimentoEvento.getText().isEmpty()) return;
         Atendimento at = null;
         try {
             at = new Atendimento(Integer.parseInt(jtfAtendimentoCodigo.getText()),
-            jtfAtendimentoData.getText(),
-            Integer.parseInt(jtfAtendimentoDuracao.getText()),
-            acmeRescue.pesquisarCodigoEvento(jtfAtendimentoEvento.getText()));
+                jtfAtendimentoData.getText(),
+                Integer.parseInt(jtfAtendimentoDuracao.getText()),
+                acmeRescue.pesquisarCodigoEvento(jtfAtendimentoEvento.getText()));
         } catch(NumberFormatException e) {}
         if(acmeRescue.adicionarAtendimento(at)) {
-            jtaSystemOut.append("Atendimento adicionado: " + at.getEvento().getCodigo() + "\n");
+            jtaSystemOut.append("Atendimento adicionado: " + at.getCodinome()+ "\n");
+            
+            listaAtendimentosDisponiveis = listaAtendimentosDisponiveis.concat("- " + at.getCodinome() + " " + at.getStatus() + "\n");
+            jtaListaAtendimentosDisponiveis.setText(listaAtendimentosDisponiveis);
+            
             listaEventoAtendimento = listaEventoAtendimento.replace("- " + at.getEvento().getCodigo() + "\n", "");
             jtaListaEventoAtendimento.setText(listaEventoAtendimento);
         }
@@ -1653,17 +1583,105 @@ public class TelaPrincipalGUI extends javax.swing.JFrame {
         jtfAtendimentoEvento.setText("");
     }//GEN-LAST:event_jbtCadastraAtendimentoActionPerformed
 
+    private void jbtAssociarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtAssociarActionPerformed
+        if(jtfAssociarEquipe.getText().isEmpty() || jtfAssociarEquipamento.getText().isEmpty()) return;
+        Equipe equipe = null;
+        Equipamento equipamento = null;
+        try{
+            equipe = acmeRescue.pesquisarCodigoEquipe(jtfAssociarEquipe.getText());
+            equipamento = acmeRescue.pesquisarCodigoEquipamento(Integer.parseInt(jtfAssociarEquipamento.getText()));
+        }catch(NumberFormatException e) {}
+
+        if(equipe == null || equipamento == null) {
+            jtaSystemOut.append("\nFalha ao associar\n");
+            return;
+        }
+
+        if(equipe.adicionarEquipamento(equipamento)) {
+            jtaSystemOut.append("Equipamento " + equipamento.getId() + " associado a equipe " + equipe.getCodinome() + " com sucesso!\n");
+            listaEquipamentosDisponiveis = listaEquipamentosDisponiveis.replace("- " + equipamento.getInfo() + "\n", "");
+            jtaListaEquipamentosDisponiveis.setText(listaEquipamentosDisponiveis);
+        }
+        else jtaSystemOut.append("\nFalha ao associar\n");
+
+        jtfAssociarEquipe.setText("");
+        jtfAssociarEquipamento.setText("");
+    }//GEN-LAST:event_jbtAssociarActionPerformed
+
+    private void jbtListaEscavadeiraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtListaEscavadeiraActionPerformed
+        if(!jtaSystemOut.getText().contains(acmeRescue.mostrarTodasEscavadeiras())) jtaSystemOut.setText(acmeRescue.mostrarTodasEscavadeiras());
+    }//GEN-LAST:event_jbtListaEscavadeiraActionPerformed
+
+    private void jtfCadastraEscavadeiraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCadastraEscavadeiraActionPerformed
+        if(jtfEscavadeiraID.getText().isEmpty() ||
+            jtfEscavadeiraNome.getText().isEmpty() ||
+            jtfEscavadeiraCusto.getText().isEmpty() ||
+            jtfEscavadeiraCombustivel.getText().isEmpty() ||
+            jtfEscavadeiraCarga.getText().isEmpty()) return;
+        Equipamento equipamento = null;
+        try {
+            equipamento = new Escavadeira(Integer.parseInt(jtfEscavadeiraID.getText()),
+                jtfEscavadeiraNome.getText(),
+                Double.parseDouble(jtfEscavadeiraCusto.getText()),
+                jtfEscavadeiraCombustivel.getText(),
+                Double.parseDouble(jtfEscavadeiraCarga.getText()));
+        }catch (NumberFormatException e) {}
+        if(acmeRescue.adicionarEquipamento(equipamento)) {
+            jtaSystemOut.append("Equipamento adicionado: " + equipamento.getId() + "\n");
+            listaEquipamentosDisponiveis += "- " + equipamento.getInfo() + "\n";
+            jtaListaEquipamentosDisponiveis.setText(listaEquipamentosDisponiveis);
+        }
+        else jtaSystemOut.append("\nFalha ao adicionar equipamento\n");
+        jtfEscavadeiraID.setText("");
+        jtfEscavadeiraNome.setText("");
+        jtfEscavadeiraCusto.setText("");
+        jtfEscavadeiraCombustivel.setText("");
+        jtfEscavadeiraCarga.setText("");
+    }//GEN-LAST:event_jtfCadastraEscavadeiraActionPerformed
+
+    private void jbtListaCaminhaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtListaCaminhaoActionPerformed
+        if(!jtaSystemOut.getText().contains(acmeRescue.mostrarTodosCaminhoes())) jtaSystemOut.setText(acmeRescue.mostrarTodosCaminhoes());
+    }//GEN-LAST:event_jbtListaCaminhaoActionPerformed
+
+    private void jtfCadastraCaminhaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCadastraCaminhaoActionPerformed
+        if(jtfCaminhaoID.getText().isEmpty() ||
+            jtfCaminhaoNome.getText().isEmpty() ||
+            jtfCaminhaoCusto.getText().isEmpty() ||
+            jtfCaminhaoCapacidade.getText().isEmpty()) return;
+        Equipamento equipamento = null;
+        try{
+            equipamento = new CaminhaoTanque(Integer.parseInt(jtfCaminhaoID.getText()),
+                jtfCaminhaoNome.getText(),
+                Double.parseDouble(jtfCaminhaoCusto.getText()),
+                Double.parseDouble(jtfCaminhaoCapacidade.getText()));
+        } catch(NumberFormatException e) {}
+        if(acmeRescue.adicionarEquipamento(equipamento)) {
+            jtaSystemOut.append("Equipamento adicionado: " + equipamento.getId() + "\n");
+            listaEquipamentosDisponiveis += "- " + equipamento.getInfo() + "\n";
+            jtaListaEquipamentosDisponiveis.setText(listaEquipamentosDisponiveis);
+        }
+        else jtaSystemOut.append("\nFalha ao adicionar equipamento\n");
+        jtfCaminhaoID.setText("");
+        jtfCaminhaoNome.setText("");
+        jtfCaminhaoCusto.setText("");
+        jtfCaminhaoCapacidade.setText("");
+    }//GEN-LAST:event_jtfCadastraCaminhaoActionPerformed
+
+    private void jbtListaBarcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtListaBarcoActionPerformed
+        if(!jtaSystemOut.getText().contains(acmeRescue.mostrarTodosBarcos())) jtaSystemOut.setText(acmeRescue.mostrarTodosBarcos());
+    }//GEN-LAST:event_jbtListaBarcoActionPerformed
+
     private void jbtCadastraBarcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtCadastraBarcoActionPerformed
         if(jtfBarcoID.getText().isEmpty() ||
-                jtfBarcoNome.getText().isEmpty() ||
-                jtfBarcoCusto.getText().isEmpty() ||
-                jtfBarcoCapacidade.getText().isEmpty()) return;
-        Equipamento equipamento = null; 
+            jtfBarcoNome.getText().isEmpty() ||
+            jtfBarcoCusto.getText().isEmpty() ||
+            jtfBarcoCapacidade.getText().isEmpty()) return;
+        Equipamento equipamento = null;
         try {
             equipamento = new Barco(Integer.parseInt(jtfBarcoID.getText()),
-            jtfBarcoNome.getText(),
-            Double.parseDouble(jtfBarcoCusto.getText()),
-            Integer.parseInt(jtfBarcoCapacidade.getText()));
+                jtfBarcoNome.getText(),
+                Double.parseDouble(jtfBarcoCusto.getText()),
+                Integer.parseInt(jtfBarcoCapacidade.getText()));
         } catch(NumberFormatException e) {
             jtaSystemOut.append("Dados invalidos:");
             return;
@@ -1680,115 +1698,176 @@ public class TelaPrincipalGUI extends javax.swing.JFrame {
         jtfBarcoCapacidade.setText("");
     }//GEN-LAST:event_jbtCadastraBarcoActionPerformed
 
-    private void jtfCadastraEscavadeiraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCadastraEscavadeiraActionPerformed
-        if(jtfEscavadeiraID.getText().isEmpty() ||
-                jtfEscavadeiraNome.getText().isEmpty() ||
-                jtfEscavadeiraCusto.getText().isEmpty() ||
-                jtfEscavadeiraCombustivel.getText().isEmpty() ||
-                jtfEscavadeiraCarga.getText().isEmpty()) return;
-        Equipamento equipamento = null;
-        try {
-            equipamento = new Escavadeira(Integer.parseInt(jtfEscavadeiraID.getText()),
-            jtfEscavadeiraNome.getText(),
-            Double.parseDouble(jtfEscavadeiraCusto.getText()),
-            jtfEscavadeiraCombustivel.getText(),
-            Double.parseDouble(jtfEscavadeiraCarga.getText()));
-        }catch (NumberFormatException e) {}
-        if(acmeRescue.adicionarEquipamento(equipamento)) {
-            jtaSystemOut.append("Equipamento adicionado: " + equipamento.getId() + "\n");
-            listaEquipamentosDisponiveis += "- " + equipamento.getInfo() + "\n";
-            jtaListaEquipamentosDisponiveis.setText(listaEquipamentosDisponiveis);
-        }
-        else jtaSystemOut.append("\nFalha ao adicionar equipamento\n");
-        jtfEscavadeiraID.setText("");
-        jtfEscavadeiraNome.setText("");
-        jtfEscavadeiraCusto.setText("");
-        jtfEscavadeiraCombustivel.setText("");
-        jtfEscavadeiraCarga.setText("");
-    }//GEN-LAST:event_jtfCadastraEscavadeiraActionPerformed
-    
-    private void jtfCadastraCaminhaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCadastraCaminhaoActionPerformed
-        if(jtfCaminhaoID.getText().isEmpty() ||
-        jtfCaminhaoNome.getText().isEmpty() ||
-        jtfCaminhaoCusto.getText().isEmpty() ||
-        jtfCaminhaoCapacidade.getText().isEmpty()) return;
-        Equipamento equipamento = null;
-        try{
-            equipamento = new CaminhaoTanque(Integer.parseInt(jtfCaminhaoID.getText()),
-            jtfCaminhaoNome.getText(),
-            Double.parseDouble(jtfCaminhaoCusto.getText()),
-            Double.parseDouble(jtfCaminhaoCapacidade.getText()));
-        } catch(NumberFormatException e) {}
-        if(acmeRescue.adicionarEquipamento(equipamento)) {
-            jtaSystemOut.append("Equipamento adicionado: " + equipamento.getId() + "\n");
-            listaEquipamentosDisponiveis += "- " + equipamento.getInfo() + "\n";
-            jtaListaEquipamentosDisponiveis.setText(listaEquipamentosDisponiveis);
-        }
-        else jtaSystemOut.append("\nFalha ao adicionar equipamento\n");
-        jtfCaminhaoID.setText("");
-        jtfCaminhaoNome.setText("");
-        jtfCaminhaoCusto.setText("");
-        jtfCaminhaoCapacidade.setText("");
-    }//GEN-LAST:event_jtfCadastraCaminhaoActionPerformed
+    private void jbtListarEquipesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtListarEquipesActionPerformed
+        if(!jtaSystemOut.getText().contains(acmeRescue.mostrarTodasEquipes()))  jtaSystemOut.setText(acmeRescue.mostrarTodasEquipes());
+    }//GEN-LAST:event_jbtListarEquipesActionPerformed
 
-    private void jbtListaEscavadeiraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtListaEscavadeiraActionPerformed
-        if(!jtaSystemOut.getText().contains(acmeRescue.mostrarTodasEscavadeiras())) jtaSystemOut.setText(acmeRescue.mostrarTodasEscavadeiras());
-    }//GEN-LAST:event_jbtListaEscavadeiraActionPerformed
-
-    private void jbtListaCaminhaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtListaCaminhaoActionPerformed
-       if(!jtaSystemOut.getText().contains(acmeRescue.mostrarTodosCaminhoes())) jtaSystemOut.setText(acmeRescue.mostrarTodosCaminhoes());
-    }//GEN-LAST:event_jbtListaCaminhaoActionPerformed
-
-    private void jbtListaBarcoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtListaBarcoActionPerformed
-        if(!jtaSystemOut.getText().contains(acmeRescue.mostrarTodosBarcos())) jtaSystemOut.setText(acmeRescue.mostrarTodosBarcos());
-    }//GEN-LAST:event_jbtListaBarcoActionPerformed
-
-    private void jbtAssociarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtAssociarActionPerformed
-        if(jtfAssociarEquipe.getText().isEmpty() || jtfAssociarEquipamento.getText().isEmpty()) return;
+    private void jbtCadastrarEquipeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtCadastrarEquipeActionPerformed
+        if(jtfCodinomeEquipe.getText().equals("") ||
+            jtfQuantidadeEquipe.getText().equals("") ||
+            jtfLatitudeEquipe.getText().equals("") ||
+            jtfLongitudeEquipe.getText().equals("")) return;
         Equipe equipe = null;
-        Equipamento equipamento = null;
         try{
-        equipe = acmeRescue.pesquisarCodigoEquipe(jtfAssociarEquipe.getText());
-        equipamento = acmeRescue.pesquisarCodigoEquipamento(Integer.parseInt(jtfAssociarEquipamento.getText()));
-        }catch(NumberFormatException e) {}
-
-        if(equipe == null || equipamento == null) {
-            jtaSystemOut.append("\nFalha ao associar\n"); 
-            return;
+            equipe = new Equipe(jtfCodinomeEquipe.getText(),
+                Integer.parseInt(jtfQuantidadeEquipe.getText()),
+                Double.parseDouble(jtfLatitudeEquipe.getText()),
+                Double.parseDouble(jtfLongitudeEquipe.getText()));
+        } catch (NumberFormatException e) {}
+        if(acmeRescue.adicionarEquipe(equipe)) {
+            jtaSystemOut.append("Equipe adicionada: " + equipe.getCodinome() + "\n");
+            jtaListaEquipesDisponiveis.append("- " + equipe.getCodinome() + "\n");
         }
+        else jtaSystemOut.append("Falha ao adicionar equipe.\n");
+        jtfCodinomeEquipe.setText("");
+        jtfQuantidadeEquipe.setText("");
+        jtfLatitudeEquipe.setText("");
+        jtfLongitudeEquipe.setText("");
+    }//GEN-LAST:event_jbtCadastrarEquipeActionPerformed
 
-        if(equipe.adicionarEquipamento(equipamento)) {
-        jtaSystemOut.append("Equipamento " + equipamento.getId() + " associado a equipe " + equipe.getCodinome() + " com sucesso!\n");
-        listaEquipamentosDisponiveis = listaEquipamentosDisponiveis.replace("- " + equipamento.getInfo() + "\n", "");
-        jtaListaEquipamentosDisponiveis.setText(listaEquipamentosDisponiveis);
+    private void jbtListaCiclonesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtListaCiclonesActionPerformed
+        if(!jtaSystemOut.getText().contains(acmeRescue.mostrarTodosCiclones())) jtaSystemOut.setText(acmeRescue.mostrarTodosCiclones());
+    }//GEN-LAST:event_jbtListaCiclonesActionPerformed
+
+    private void jbtCadastraCicloneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtCadastraCicloneActionPerformed
+        if(jtfCodigoCiclone.getText().equals("") ||
+            jtfDataCiclone.getText().equals("")||
+            jtfLatitudeCiclone.getText().equals("") ||
+            jtfLongitudeCiclone.getText().equals("") ||
+            jtfVelocidadeCiclone.getText().equals("") ||
+            jtfPrecipitacaoCIclone.getText().equals("")) return;
+        Evento evento = null;
+        try {
+            evento = new Ciclone(jtfCodigoCiclone.getText(),
+                jtfDataCiclone.getText(),
+                Double.parseDouble(jtfLatitudeCiclone.getText()),
+                Double.parseDouble(jtfLongitudeCiclone.getText()),
+                Double.parseDouble(jtfVelocidadeCiclone.getText()),
+                Double.parseDouble(jtfPrecipitacaoCIclone.getText()));
+        } catch(NumberFormatException e) {}
+        if(acmeRescue.adicionarEvento(evento)) {
+            jtaSystemOut.append("Evento adicionado: " + evento.getCodigo() + "\n");
+            listaEventoAtendimento += "- " + evento.getCodigo() + "\n";
+            jtaListaEventoAtendimento.setText(listaEventoAtendimento);
         }
-        else jtaSystemOut.append("\nFalha ao associar\n");
+        else jtaSystemOut.append("\nFalha ao adicionar evento\n");
+        jtfCodigoCiclone.setText("");
+        jtfDataCiclone.setText("");
+        jtfLatitudeCiclone.setText("");
+        jtfLongitudeCiclone.setText("");
+        jtfVelocidadeCiclone.setText("");
+        jtfPrecipitacaoCIclone.setText("");
+    }//GEN-LAST:event_jbtCadastraCicloneActionPerformed
 
-        jtfAssociarEquipe.setText("");
-        jtfAssociarEquipamento.setText("");
-    }//GEN-LAST:event_jbtAssociarActionPerformed
+    private void jbtListaTerremotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtListaTerremotoActionPerformed
+        if(!jtaSystemOut.getText().contains(acmeRescue.mostrarTodosTerremotos())) jtaSystemOut.setText(acmeRescue.mostrarTodosTerremotos());
+    }//GEN-LAST:event_jbtListaTerremotoActionPerformed
 
-    private void jbtMostrarRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtMostrarRelatorioActionPerformed
-        if(!jtaSystemOut.getText().contentEquals(acmeRescue.mostrarRelatorio())) jtaSystemOut.setText(acmeRescue.mostrarRelatorio());
-    }//GEN-LAST:event_jbtMostrarRelatorioActionPerformed
+    private void jbtCadastraTerremotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtCadastraTerremotoActionPerformed
+        if(jtfTerremotoCodigo.getText().isEmpty() ||
+            jtfTerremotoData.getText().isEmpty() ||
+            jtfTerremotoLongitude.getText().isEmpty() ||
+            jtfTerremotoLatitude.getText().isEmpty() ||
+            jtfTerremotoEscala.getText().isEmpty()) return;
+        Evento evento = null;
+        try {
+            evento = new Terremoto(jtfTerremotoCodigo.getText(),
+                jtfTerremotoData.getText(),
+                Double.parseDouble(jtfTerremotoLatitude.getText()),
+                Double.parseDouble(jtfTerremotoLongitude.getText()),
+                Double.parseDouble(jtfTerremotoEscala.getText()));
+        } catch(NumberFormatException e) {}
+        if(acmeRescue.adicionarEvento(evento)) {
+            jtaSystemOut.append("Evento adicionado: " + evento.getCodigo() + "\n");
+            listaEventoAtendimento += "- " + evento.getCodigo() + "\n";
+            jtaListaEventoAtendimento.setText(listaEventoAtendimento);
+        }
+        else jtaSystemOut.append("\nFalha ao adicionar evento.\n");
+        jtfTerremotoCodigo.setText("");
+        jtfTerremotoData.setText("");
+        jtfTerremotoLatitude.setText("");
+        jtfTerremotoLongitude.setText("");
+        jtfTerremotoEscala.setText("");
 
-    private void jbtMostrarTodosEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtMostrarTodosEventosActionPerformed
-       if(!jtaSystemOut.getText().contentEquals(acmeRescue.mostrarTodosEventos())) jtaSystemOut.setText(acmeRescue.mostrarTodosEventos());
-    }//GEN-LAST:event_jbtMostrarTodosEventosActionPerformed
+    }//GEN-LAST:event_jbtCadastraTerremotoActionPerformed
 
-    private void jbtMostrarTodasEquipesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtMostrarTodasEquipesActionPerformed
-        if (!jtaSystemOut.getText().contentEquals(acmeRescue.mostrarTodasEquipes())) jtaSystemOut.setText(acmeRescue.mostrarTodasEquipes());
-    }//GEN-LAST:event_jbtMostrarTodasEquipesActionPerformed
+    private void jbtListaSecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtListaSecaActionPerformed
+        if (!jtaSystemOut.getText().contains(acmeRescue.mostrarTodasSecas())) jtaSystemOut.setText(acmeRescue.mostrarTodasSecas());
+    }//GEN-LAST:event_jbtListaSecaActionPerformed
 
-    private void jbtMostrarTodosEquipamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtMostrarTodosEquipamentosActionPerformed
-        if (!jtaSystemOut.getText().contentEquals(acmeRescue.mostrarTodosEquipamentos())) jtaSystemOut.setText(acmeRescue.mostrarTodosEquipamentos());
-    }//GEN-LAST:event_jbtMostrarTodosEquipamentosActionPerformed
+    private void jbtCadastrarSecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtCadastrarSecaActionPerformed
+        if(jtfSecaCodigo.getText().isEmpty() ||
+            jtfSecaData.getText().isEmpty() ||
+            jtfSecaLatitude.getText().isEmpty() ||
+            jtfSecaLongitude.getText().isEmpty() ||
+            jtfSecaEstiagem.getText().isEmpty()) return;
+        Evento evento = null;
+        try {
+            evento = new Seca(jtfSecaCodigo.getText(),
+                jtfSecaData.getText(),
+                Double.parseDouble(jtfSecaLatitude.getText()),
+                Double.parseDouble(jtfSecaLongitude.getText()),
+                Integer.parseInt(jtfSecaEstiagem.getText()));
+        } catch(NumberFormatException e) {}
+        if(acmeRescue.adicionarEvento(evento)) {
+            jtaSystemOut.append("Evento adicionado: " + evento.getCodigo() + "\n");
+            listaEventoAtendimento += "- " + evento.getCodigo() + "\n";
+            jtaListaEventoAtendimento.setText(listaEventoAtendimento);
+        }
+        else jtaSystemOut.append("Falha ao adicionar seca");
+        jtfSecaCodigo.setText("");
+        jtfSecaData.setText("");
+        jtfSecaLatitude.setText("");
+        jtfSecaLongitude.setText("");
+        jtfSecaEstiagem.setText("");
+    }//GEN-LAST:event_jbtCadastrarSecaActionPerformed
+    
+    private void jbtSelecionarAtendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtSelecionarAtendimentoActionPerformed
+        if(jtfSelecionarAtendimento.getText().isEmpty()) return;
+        Atendimento atendimentoStatus = null;
+        try{
+            atendimentoStatus = acmeRescue.pesquisarCodigoAtendimento(Integer.parseInt(jtfSelecionarAtendimento.getText()));
+        } catch(NumberFormatException e){return;}
+        jtaAtendimentoSelcionado.setText(atendimentoStatus.getDescricao());
+        jbtStatusConfirmar.setEnabled(true);
+        jrbCancelado.setEnabled(true);
+        jrbExecutando.setEnabled(true);
+        jrbFinalizado.setEnabled(true);
+        jrbPendente.setEnabled(true);
+    }//GEN-LAST:event_jbtSelecionarAtendimentoActionPerformed
 
-    private void jbtMostrarTodosAtendimentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtMostrarTodosAtendimentosActionPerformed
-        if (!jtaSystemOut.getText().contentEquals(acmeRescue.mostrarTodosAtendimentos())) jtaSystemOut.setText(acmeRescue.mostrarTodosAtendimentos());
-    }//GEN-LAST:event_jbtMostrarTodosAtendimentosActionPerformed
-
+    private void jbtStatusConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtStatusConfirmarActionPerformed
+        if((!jrbCancelado.isSelected()) &&
+                (!jrbExecutando.isSelected()) &&
+                (!jrbFinalizado.isSelected()) &&
+                (!jrbPendente.isSelected())) return;
+        Atendimento atendimento = acmeRescue.pesquisarCodigoAtendimento(Integer.parseInt(jtfSelecionarAtendimento.getText()));
+        String anterior = "- " + atendimento.getCodinome() + " " + atendimento.getStatus().toUpperCase() + "\n";
+        if (jrbCancelado.isSelected()) {
+            atendimento.alterarStatus("Cancelado");
+        } else if (jrbExecutando.isSelected()) {
+            atendimento.alterarStatus("Executando");
+        } else if (jrbFinalizado.isSelected()) {
+            atendimento.alterarStatus("Finalizado");
+        } else if (jrbPendente.isSelected()) {
+            atendimento.alterarStatus("Pendente");
+        }
+        jtaAtendimentoSelcionado.setText(atendimento.getDescricao());
+        listaAtendimentosDisponiveis = listaAtendimentosDisponiveis.replace(anterior, "- " + atendimento.getCodinome() + " " + atendimento.getStatus().toUpperCase() + "\n");
+        jtaListaAtendimentosDisponiveis.setText(listaAtendimentosDisponiveis);
+        jbtStatusConfirmar.setEnabled(false);
+        jrbCancelado.setEnabled(false);
+        jrbExecutando.setEnabled(false);
+        jrbFinalizado.setEnabled(false);
+        jrbPendente.setEnabled(false);
+        buttonGroup.clearSelection();
+        jtaAtendimentoSelcionado.setText("");
+        jtfSelecionarAtendimento.setText("");
+        
+    }//GEN-LAST:event_jbtStatusConfirmarActionPerformed
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1821,7 +1900,6 @@ public class TelaPrincipalGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
-    private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
@@ -1846,7 +1924,6 @@ public class TelaPrincipalGUI extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTabbedPane jTabbedPane4;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton jbtAlocacaoAutomatica;
     private javax.swing.JButton jbtAssociar;
     private javax.swing.JButton jbtCadastraAtendimento;
@@ -1868,11 +1945,8 @@ public class TelaPrincipalGUI extends javax.swing.JFrame {
     private javax.swing.JButton jbtMostrarTodosEquipamentos;
     private javax.swing.JButton jbtMostrarTodosEventos;
     private javax.swing.JButton jbtSairTelaPrincipal;
+    private javax.swing.JButton jbtSelecionarAtendimento;
     private javax.swing.JButton jbtStatusConfirmar;
-    private javax.swing.JCheckBox jcbCancelado;
-    private javax.swing.JCheckBox jcbExecutando;
-    private javax.swing.JCheckBox jcbFinalizado;
-    private javax.swing.JCheckBox jcbPeendente;
     private javax.swing.JLabel jlbCabecalhoInicio;
     private javax.swing.JLabel jlbCodinomeEquipe;
     private javax.swing.JLabel jlbLatitudeEquipe;
@@ -1891,12 +1965,16 @@ public class TelaPrincipalGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jpConfigAtendimento;
     private javax.swing.JPanel jpInfosGerais;
     private javax.swing.JPanel jpOutro;
+    private javax.swing.JRadioButton jrbCancelado;
+    private javax.swing.JRadioButton jrbExecutando;
+    private javax.swing.JRadioButton jrbFinalizado;
+    private javax.swing.JRadioButton jrbPendente;
+    private javax.swing.JTextArea jtaAtendimentoSelcionado;
+    private javax.swing.JTextArea jtaListaAtendimentosDisponiveis;
     private javax.swing.JTextArea jtaListaEquipamentosDisponiveis;
-    private javax.swing.JTextArea jtaListaEquipamentosDisponiveis1;
     private javax.swing.JTextArea jtaListaEquipesDisponiveis;
     private javax.swing.JTextArea jtaListaEventoAtendimento;
     private javax.swing.JTextArea jtaSystemOut;
-    private javax.swing.JTextField jtfAlterarStatusAtendimento;
     private javax.swing.JTextField jtfAssociarEquipamento;
     private javax.swing.JTextField jtfAssociarEquipe;
     private javax.swing.JTextField jtfAtendimentoCodigo;
@@ -1932,6 +2010,7 @@ public class TelaPrincipalGUI extends javax.swing.JFrame {
     private javax.swing.JTextField jtfSecaEstiagem;
     private javax.swing.JTextField jtfSecaLatitude;
     private javax.swing.JTextField jtfSecaLongitude;
+    private javax.swing.JTextField jtfSelecionarAtendimento;
     private javax.swing.JTextField jtfTerremotoCodigo;
     private javax.swing.JTextField jtfTerremotoData;
     private javax.swing.JTextField jtfTerremotoEscala;

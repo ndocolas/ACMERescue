@@ -8,7 +8,7 @@ public class Atendimento {
 	private int cod;
 	private String dataInicio;
 	private int duracao;
-    private String status;
+        private String status;
 
 	private Evento evento;
 	private Equipe equipeAlocada;
@@ -19,14 +19,20 @@ public class Atendimento {
 		this.duracao = duracao;
 		this.evento = evento;
 		equipeAlocada = null;
-        status = "PEENDENTE";
+                status = "PEENDENTE";
 	}
-	
+
+	public String getStatus() {return status;}
+        public void alterarStatus(String status) {
+            this.status=status;
+        }
+        
 	public int getCodinome() {return cod;}
 	public String getData() {return dataInicio;}
 	public Evento getEvento() {return evento;}
-	public String getEquipeDescricao() {return (equipeAlocada.equals(null)) ? "Nenhuma equipe alocada":equipeAlocada.getDescricao();}
-    public String getDescricao() {
+	public String getEquipeDescricao() {return (equipeAlocada == null) ? "Nenhuma equipe alocada" : equipeAlocada.getDescricao();}
+    
+	public String getDescricao() {
         return "Codigo: " + cod +
                 "\nData: " + dataInicio +
                 "\nDuracao: " + duracao + " dias" +
