@@ -5,38 +5,95 @@ import Eventos.Evento;
 
 public class Atendimento {
 
-	private int cod;
+	private int codigo;
 	private String dataInicio;
 	private int duracao;
         private String status;
 
 	private Evento evento;
 	private Equipe equipeAlocada;
+        
+        public Atendimento(int codigo, String dataInicio, int duracao, String status, Evento evento) {
+        this.codigo = codigo;
+        this.dataInicio = dataInicio;
+        this.duracao = duracao;
+        this.evento = evento;
+        this.status = status;
+        equipeAlocada = null;
+    }
 	
 	public Atendimento(int codigo, String dataInicio, int duracao, Evento evento) {
-		cod = codigo;
+		this.codigo = codigo;
 		this.dataInicio = dataInicio;
 		this.duracao = duracao;
 		this.evento = evento;
+                status = "PENDENTE";
 		equipeAlocada = null;
-                status = "PEENDENTE";
 	}
 
 	public String getStatus() {return status;}
         public void alterarStatus(String status) {
-            this.status=status;
+            switch(status.toUpperCase()) {
+                case "PENDENTE" -> {
+                    this.status = status;
+                }
+                case "EXECUTANDO" -> {
+                    this.status =  status;
+                    break;
+                }
+                case "FINALIZADO" -> {
+                    if(equipeAlocada==null) return;
+                    equipeAlocada.setIsAlocada(false);
+                    equipeAlocada = null;
+                    this.status = status;
+                    break;
+                }
+                case "CANCELADO" -> {
+                    if (equipeAlocada == null) return;
+                    equipeAlocada.setIsAlocada(false);
+                    equipeAlocada = null;
+                    this.status = status;
+                    break;
+                }
+                default -> {return;}
+            }
+        }  
+        public boolean setEquipe(Equipe e) {
+            if(equipeAlocada == null){
+                equipeAlocada = e;
+                status = "EXECUTANDO";
+                return true;
+            }
+            return false;
+        }
+        public Equipe getEquipeAlocada() {
+            return equipeAlocada;
         }
         
-	public int getCodinome() {return cod;}
+	public int getCodinome() {return codigo;}
 	public String getData() {return dataInicio;}
+        public int getDuracao() {return duracao;}
 	public Evento getEvento() {return evento;}
+        
 	public String getEquipeDescricao() {return (equipeAlocada == null) ? "Nenhuma equipe alocada" : equipeAlocada.getDescricao();}
-    
+        public double calculaPrecoAtendimento() {
+            return equipeAlocada.calcularPrecoEquipe(duracao) + equipeAlocada.calculaPrecoEquipamento(duracao) +
+                    equipeAlocada.calculaPrecoDeslocamento(evento.getLatitude(), evento.getLongitude());
+        }
+        
 	public String getDescricao() {
-        return "Codigo: " + cod +
-                "\nData: " + dataInicio +
-                "\nDuracao: " + duracao + " dias" +
-                "\nStatus: " + status +
-				"\nEvento: " + evento.getDescricao();
+        return (equipeAlocada==null) ? "Codigo: " + codigo
+                    + "\nData: " + dataInicio
+                    + "\nDuracao: " + duracao + " dias"
+                    + "\nStatus: " + status
+                    + "\nEvento: " + evento.getDescricao() 
+                    : 
+                    "Codigo: " + codigo
+                    + "\nData: " + dataInicio
+                    + "\nDuracao: " + duracao + " dias"
+                    + "\nStatus: " + status
+                    + "\nEvento: " + evento.getDescricao()
+                    + "Equipe: " + equipeAlocada.getDescricao();
+                    
     }
 }

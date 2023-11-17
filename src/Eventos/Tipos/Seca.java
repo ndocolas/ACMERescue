@@ -11,6 +11,8 @@ public class Seca extends Evento {
 		super(codigo, data, latitude, longitude);
 		this.estiagem = estiagem;
 	 }
+        
+        public int getEstiagem() {return estiagem;}
 
 	 @Override
 	 public String getDescricao() {

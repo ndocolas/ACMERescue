@@ -1,23 +1,25 @@
 package Equipe.Equipamentos;
+
+import Equipe.Equipe;
+
 public abstract class Equipamento {
 
 	private int id;
 	private String nome;
 	private double custoDia;
-	private boolean isAdded;
+        private Equipe equipe;
 
-	public Equipamento(int id, String nome, double custoDia) {
+	public Equipamento(int id, String nome, double custoDia, Equipe equipe) {
 		this.id = id;
 		this.nome = nome;
 		this.custoDia = custoDia;
-		isAdded = false;
+                this.equipe = equipe;
 	}
 
 	public int getId() {return id;}
 	public String getNome() {return nome;}
 	public double getCustoDia() {return custoDia;}
-	public boolean getIsAdded() {return isAdded;}
-	public void setIsAdded() {isAdded = true;}
+        public Equipe getEquipe() {return equipe;}
 
 	public abstract String getInfo();
 	public abstract String getDescricao();

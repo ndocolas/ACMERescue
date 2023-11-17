@@ -13,6 +13,10 @@ public class Ciclone extends Evento {
 		this.velocidade = velocidade;
 		this.precipitacao = precipitacao;
 	}
+        
+        public double getVelocidade() {return velocidade;}
+        public double getPrecipitacao() {return precipitacao;}
+        
 	@Override
 	public String getDescricao() {
 		return "\n   Tipo: Ciclone " +

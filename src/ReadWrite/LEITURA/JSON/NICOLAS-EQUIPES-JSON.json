@@ -1,0 +1,44 @@
+[
+    {
+        "codinome": "Zulu",
+        "quantidade": 45,
+        "latitude": 34.0522,
+        "longitude": -118.2437
+    },
+    {
+        "codinome": "Yankee",
+        "quantidade": 55,
+        "latitude": 40.7128,
+        "longitude": -74.0060
+    },
+    {
+        "codinome": "X-Ray",
+        "quantidade": 30,
+        "latitude": 51.5074,
+        "longitude": -0.1278
+    },
+    {
+        "codinome": "Whiskey",
+        "quantidade": 65,
+        "latitude": 48.8566,
+        "longitude": 2.3522
+    },
+    {
+        "codinome": "Victor",
+        "quantidade": 37,
+        "latitude": -33.8688,
+        "longitude": 151.2093
+    },
+    {
+        "codinome": "Uniform",
+        "quantidade": 20,
+        "latitude": 35.6895,
+        "longitude": 139.6917
+    },
+    {
+        "codinome": "Tango",
+        "quantidade": 42,
+        "latitude": -22.9068,
+        "longitude": -43.1729
+    }
+]

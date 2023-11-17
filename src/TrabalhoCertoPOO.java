@@ -1,14 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
 
-/**
- *
- * @author nico
- */
+import Manage.ACMERescue;
+import Manage.LeituraInicial;
+
+//ARRUMAR LEITURA JSON (TRYCATCH)   
+
 public class TrabalhoCertoPOO {
-
     public static void main(String[] args) {
-        new TelaPrincipalGUI();
+        new LeituraInicial(new ACMERescue());
     }
+    
+
 }

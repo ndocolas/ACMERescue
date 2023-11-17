@@ -10,6 +10,8 @@ public class Terremoto extends Evento {
 		this.magnitude = magnitude;
 	}
 
+        public double getMagnitude() {return magnitude;}
+        
 	@Override
 	public String getDescricao() {
 		return "\n   Tipo: Terremoto " +

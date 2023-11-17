@@ -1,18 +1,22 @@
 package Equipe.Equipamentos.Tipos;
 
 import Equipe.Equipamentos.Equipamento;
+import Equipe.Equipe;
 
 public class Escavadeira extends Equipamento {
 
 	private String combustivel;
 	private double carga;
 
-	public Escavadeira(int id, String nome, double custoDia, String combustivel, double carga) {
-		super(id, nome, custoDia);
+	public Escavadeira(int id, String nome, double custoDia, String combustivel, double carga, Equipe equipe) {
+        super(id, nome, custoDia, equipe);
 		this.combustivel = combustivel;
 		this.carga = carga;
 	}
 
+        public String getCombustivel() {return combustivel;}
+        public double getCarga() {return carga;}
+        
 	@Override
 	public String getInfo() {return super.getId() + " E";}
 
@@ -22,7 +26,8 @@ public class Escavadeira extends Equipamento {
 				"\n   ID: " + super.getId() +
 				"\n   Nome: " + super.getNome() +
 				"\n   Custo Diario: " + super.getCustoDia() +
-				"\n   Tipo de Combustivel" + combustivel +
-				"\n   Carga: " + carga+ "\n";
+				"\n   Tipo de Combustivel: " + combustivel.toUpperCase() +
+				"\n   Carga: " + carga +
+                                "\n   Equipe: " + super.getEquipe().getCodinome() + "\n";
 	}
 }
