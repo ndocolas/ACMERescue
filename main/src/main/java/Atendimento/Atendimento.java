@@ -5,15 +5,15 @@ import Eventos.Evento;
 
 public class Atendimento {
 
-	private int codigo;
-	private String dataInicio;
-	private int duracao;
-    private String status;
+     int codigo;
+     String dataInicio;
+     int duracao;
+     String status;
 
-	private Evento evento;
-	private Equipe equipeAlocada;
-        
-        public Atendimento(int codigo, String dataInicio, int duracao, String status, Evento evento) {
+     Evento evento;
+     Equipe equipeAlocada;
+
+    public Atendimento(int codigo, String dataInicio, int duracao, String status, Evento evento) {
         this.codigo = codigo;
         this.dataInicio = dataInicio;
         this.duracao = duracao;
@@ -21,79 +21,104 @@ public class Atendimento {
         this.status = status;
         equipeAlocada = null;
     }
-	
-	public Atendimento(int codigo, String dataInicio, int duracao, Evento evento) {
-		this.codigo = codigo;
-		this.dataInicio = dataInicio;
-		this.duracao = duracao;
-		this.evento = evento;
-        status = "PENDENTE";
-		equipeAlocada = null;
-	}
 
-	public String getStatus() {return status;}
-        public void alterarStatus(String status) {
-            switch(status.toUpperCase()) {
-                case "PENDENTE" -> {
-                    this.status = status;
-                }
-                case "EXECUTANDO" -> {
-                    this.status =  status;
-                    break;
-                }
-                case "FINALIZADO" -> {
-                    if(equipeAlocada==null) return;
+    public Atendimento(int codigo, String dataInicio, int duracao, Evento evento) {
+        this.codigo = codigo;
+        this.dataInicio = dataInicio;
+        this.duracao = duracao;
+        this.evento = evento;
+        status = "PENDENTE";
+        equipeAlocada = null;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void alterarStatus(String status) {
+        switch (status.toUpperCase()) {
+            case "PENDENTE" -> {
+                this.status = status;
+                break;
+            }
+            case "EXECUTANDO" -> {
+                this.status = status;
+                break;
+            }
+            case "FINALIZADO" -> {
+                if (equipeAlocada != null) {
                     equipeAlocada.setIsAlocada(false);
                     equipeAlocada = null;
-                    this.status = status;
-                    break;
                 }
-                case "CANCELADO" -> {
-                    if (equipeAlocada == null) return;
+                this.status = status;
+                break;
+            }
+            case "CANCELADO" -> {
+                if (equipeAlocada != null) {
                     equipeAlocada.setIsAlocada(false);
                     equipeAlocada = null;
-                    this.status = status;
-                    break;
                 }
-                default -> {return;}
+                this.status = status;
+                break;
             }
-        }  
-        public boolean setEquipe(Equipe e) {
-            if(equipeAlocada == null){
-                equipeAlocada = e;
-                status = "EXECUTANDO";
-                return true;
+            default -> {
+                return;
             }
-            return false;
         }
-        public Equipe getEquipeAlocada() {
-            return equipeAlocada;
+    }
+
+    public boolean setEquipe(Equipe e) {
+        if (equipeAlocada == null) {
+            equipeAlocada = e;
+            status = "EXECUTANDO";
+            return true;
         }
-        
-	public int getCodinome() {return codigo;}
-	public String getData() {return dataInicio;}
-    public int getDuracao() {return duracao;}
-	public Evento getEvento() {return evento;}
-        
-	public String getEquipeDescricao() {return (equipeAlocada == null) ? "Nenhuma equipe alocada" : equipeAlocada.getDescricao();}
+        return false;
+    }
+
+    public Equipe getEquipeAlocada() {
+        return equipeAlocada;
+    }
+
+    public int getCodinome() {
+        return codigo;
+    }
+
+    public String getData() {
+    return dataInicio;
+    }   
+
+    public int getDuracao() {
+    return duracao;
+    }
+
+    public Evento getEvento() {
+    return evento;
+    }
+
+    public String getEquipeDescricao() {
+        return (equipeAlocada == null) ? "Nenhuma equipe alocada\n" : equipeAlocada.getDescricao();
+    }
+
     public double calculaPrecoAtendimento() {
         return equipeAlocada.calcularPrecoEquipe(duracao) + equipeAlocada.calculaPrecoEquipamento(duracao) +
                 equipeAlocada.calculaPrecoDeslocamento(evento.getLatitude(), evento.getLongitude());
     }
-        
-	public String getDescricao() {
-        return (equipeAlocada==null) ? "Codigo: " + codigo
-                    + "\nData: " + dataInicio
-                    + "\nDuracao: " + duracao + " dias"
-                    + "\nStatus: " + status
-                    + "\nEvento: " + evento.getDescricao() 
-                    : 
-                    "Codigo: " + codigo
-                    + "\nData: " + dataInicio
-                    + "\nDuracao: " + duracao + " dias"
-                    + "\nStatus: " + status
-                    + "\nEvento: " + evento.getDescricao()
-                    + "Equipe: " + equipeAlocada.getDescricao();
-                    
+
+    public String getDescricao() {
+        return (equipeAlocada == null) ? "Codigo: " + codigo
+                + "\nData: " + dataInicio
+                + "\nDuracao: " + duracao + " dias"
+                + "\nStatus: " + status
+                + "\nEvento: " + evento.getDescricao()
+                + "\nCusto Total: Atendimento sem equipe"
+                : "Codigo: " + codigo
+                        + "\nData: " + dataInicio
+                        + "\nDuracao: " + duracao + " dias"
+                        + "\nStatus: " + status
+                        + "\nEvento: " + evento.getDescricao()
+                        + "\nCusto Total: " + calculaPrecoAtendimento()
+                        + "\nEquipe: " + equipeAlocada.getDescricao();
+
     }
 }

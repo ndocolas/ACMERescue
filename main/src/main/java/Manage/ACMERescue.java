@@ -1,9 +1,9 @@
 package Manage;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 import Atendimento.Atendimento;
 import Equipe.Equipamentos.Equipamento;
@@ -22,13 +22,13 @@ public class ACMERescue {
     private ArrayList<Equipe> listaEquipe;
     private ArrayList<Evento> listaEvento;
     private ArrayList<Equipamento> listaEquipamento;
-    private List<Atendimento> listaAtendimento;
+    private Queue<Atendimento> listaAtendimento;
     
     public ACMERescue() {
        listaEquipe = new ArrayList<>();
        listaEvento = new ArrayList<>();
        listaEquipamento = new ArrayList<>();
-       listaAtendimento = Collections.synchronizedList(new LinkedList<>());
+       listaAtendimento = new LinkedList<>();
     }
 
     //EQUIPE-----------------------

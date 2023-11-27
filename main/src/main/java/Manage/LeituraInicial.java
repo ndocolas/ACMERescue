@@ -27,6 +27,7 @@ public class LeituraInicial extends JFrame {
         setVisible(true);
         initComponents();
     }
+    
     private void initComponents() {
 
         jPanel1 = new JPanel();

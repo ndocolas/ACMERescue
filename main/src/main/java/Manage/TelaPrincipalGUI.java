@@ -55,6 +55,7 @@ public class TelaPrincipalGUI extends JFrame {
         buttonGroup = new ButtonGroup();
         grupoGravacao = new ButtonGroup();
         grupoLeitura = new ButtonGroup();
+        grupoThemeMode = new ButtonGroup();
         jPanelTela = new JPanel();
         jlbCabecalhoInicio = new JLabel();
         TelaInicial = new JTabbedPane();
@@ -131,7 +132,7 @@ public class TelaPrincipalGUI extends JFrame {
         jtfCaminhaoNome = new JTextField();
         jtfCaminhaoCusto = new JTextField();
         jtfCaminhaoCapacidade = new JTextField();
-        jtfCadastraCaminhao = new JButton();
+        jbtCadastraCaminhao = new JButton();
         jtfEquipeCaminhaoCarga = new JTextField();
         jLabel34 = new JLabel();
         jpCadastraEscavadeira = new JPanel();
@@ -209,6 +210,12 @@ public class TelaPrincipalGUI extends JFrame {
         jLabel36 = new JLabel();
         jSeparator1 = new JSeparator();
         jLabel38 = new JLabel();
+        PAINELTEMA = new JPanel();
+        jrbThemeDARK = new JRadioButton();
+        jrbThemeLIGHT = new JRadioButton();
+        jLabel42 = new JLabel();
+        jrbThemePURPLE = new JRadioButton();
+        jbtChangeTheme = new JButton();
         jPanel1 = new JPanel();
         jScrollPane1 = new JScrollPane();
         jtaSystemOut = new JTextArea();
@@ -291,11 +298,11 @@ public class TelaPrincipalGUI extends JFrame {
                             .addComponent(jLabel16, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jpCadastraSecaLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                            .addComponent(jtfSecaCodigo, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
-                            .addComponent(jtfSecaData, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
-                            .addComponent(jtfSecaLongitude, GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
-                            .addComponent(jtfSecaLatitude, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
-                            .addComponent(jtfSecaEstiagem, GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE))))
+                            .addComponent(jtfSecaCodigo, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
+                            .addComponent(jtfSecaData, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
+                            .addComponent(jtfSecaLongitude, GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
+                            .addComponent(jtfSecaLatitude, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
+                            .addComponent(jtfSecaEstiagem, GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jpCadastraSecaLayout.setVerticalGroup(
@@ -387,7 +394,7 @@ public class TelaPrincipalGUI extends JFrame {
                         .addGroup(jpCadastraTerremotoLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                             .addComponent(jtfTerremotoCodigo, GroupLayout.Alignment.LEADING)
                             .addComponent(jtfTerremotoData, GroupLayout.Alignment.LEADING)
-                            .addComponent(jtfTerremotoLongitude, GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
+                            .addComponent(jtfTerremotoLongitude, GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
                             .addComponent(jtfTerremotoLatitude, GroupLayout.Alignment.LEADING)
                             .addComponent(jtfTerremotoEscala))))
                 .addContainerGap())
@@ -484,7 +491,7 @@ public class TelaPrincipalGUI extends JFrame {
                             .addComponent(jLabel11, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jpCadastraCicloneLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                            .addComponent(jtfVelocidadeCiclone, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
+                            .addComponent(jtfVelocidadeCiclone, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
                             .addComponent(jtfLongitudeCiclone, GroupLayout.Alignment.TRAILING)
                             .addComponent(jtfLatitudeCiclone)
                             .addComponent(jtfCodigoCiclone)
@@ -530,11 +537,11 @@ public class TelaPrincipalGUI extends JFrame {
         jpEvento.setLayout(jpEventoLayout);
         jpEventoLayout.setHorizontalGroup(
             jpEventoLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane3, GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE)
+            .addComponent(jTabbedPane3, GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE)
         );
         jpEventoLayout.setVerticalGroup(
             jpEventoLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane3, GroupLayout.PREFERRED_SIZE, 261, Short.MAX_VALUE)
+            .addComponent(jTabbedPane3, GroupLayout.PREFERRED_SIZE, 275, Short.MAX_VALUE)
         );
 
         TelaInicial.addTab("Evento", jpEvento);
@@ -584,7 +591,7 @@ public class TelaPrincipalGUI extends JFrame {
                             .addComponent(jlbLongitudeEquipe, GroupLayout.PREFERRED_SIZE, 81, GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanelCadastraEquipeLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                            .addComponent(jtfQuantidadeEquipe, GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
+                            .addComponent(jtfQuantidadeEquipe, GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
                             .addComponent(jtfLatitudeEquipe)
                             .addComponent(jtfLongitudeEquipe)
                             .addComponent(jtfCodinomeEquipe))))
@@ -609,7 +616,7 @@ public class TelaPrincipalGUI extends JFrame {
                 .addGroup(jPanelCadastraEquipeLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                     .addComponent(jlbLongitudeEquipe)
                     .addComponent(jtfLongitudeEquipe, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                 .addComponent(jbtCadastrarEquipe, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -670,7 +677,7 @@ public class TelaPrincipalGUI extends JFrame {
                             .addComponent(jLabel35, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jpCadastraBarcoLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                            .addComponent(jtfBarcoNome, GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
+                            .addComponent(jtfBarcoNome, GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
                             .addComponent(jtfBarcoCusto)
                             .addComponent(jtfBarcoCapacidade)
                             .addComponent(jtfEquipeBarco)
@@ -733,9 +740,9 @@ public class TelaPrincipalGUI extends JFrame {
 
         jtfCaminhaoCapacidade.setName("jtfCaminhaoCapacidade");
 
-        jtfCadastraCaminhao.setText("Cadastrar");
-        jtfCadastraCaminhao.setName("jtfCadastraCaminhao");
-        jtfCadastraCaminhao.addActionListener(e -> jtfCadastraCaminhaoActionPerformed());
+        jbtCadastraCaminhao.setText("Cadastrar");
+        jbtCadastraCaminhao.setName("jbtCadastraCaminhao");
+        jbtCadastraCaminhao.addActionListener(e -> jbtCadastraCaminhaoActionPerformed());
 
         jtfEquipeCaminhaoCarga.setName("jtfEquipeCaminhaoCarga");
 
@@ -758,14 +765,14 @@ public class TelaPrincipalGUI extends JFrame {
                             .addComponent(jLabel34, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jpCaminhaoCargaLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                            .addComponent(jtfCaminhaoCapacidade, GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
+                            .addComponent(jtfCaminhaoCapacidade, GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
                             .addComponent(jtfCaminhaoID, GroupLayout.Alignment.LEADING)
                             .addComponent(jtfEquipeCaminhaoCarga, GroupLayout.Alignment.LEADING)
                             .addComponent(jtfCaminhaoNome)
                             .addComponent(jtfCaminhaoCusto)))
                     .addGroup(GroupLayout.Alignment.TRAILING, jpCaminhaoCargaLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jtfCadastraCaminhao, GroupLayout.PREFERRED_SIZE, 95, GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jbtCadastraCaminhao, GroupLayout.PREFERRED_SIZE, 95, GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jpCaminhaoCargaLayout.setVerticalGroup(
@@ -792,7 +799,7 @@ public class TelaPrincipalGUI extends JFrame {
                     .addComponent(jtfEquipeCaminhaoCarga, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel34))
                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jtfCadastraCaminhao, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+                .addComponent(jbtCadastraCaminhao, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -855,7 +862,7 @@ public class TelaPrincipalGUI extends JFrame {
                             .addComponent(jLabel24, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jpCadastraEscavadeiraLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                            .addComponent(jtfEscavadeiraCombustivel, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
+                            .addComponent(jtfEscavadeiraCombustivel, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
                             .addComponent(jtfEscavadeiraID)
                             .addComponent(jtfEscavadeiraCarga)
                             .addComponent(jtfEscavadeiraNome, GroupLayout.Alignment.TRAILING)
@@ -931,7 +938,7 @@ public class TelaPrincipalGUI extends JFrame {
         );
         jpEquipamentoLayout.setVerticalGroup(
             jpEquipamentoLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addComponent(jtpCadastraEquipamento, GroupLayout.PREFERRED_SIZE, 261, Short.MAX_VALUE)
+            .addComponent(jtpCadastraEquipamento, GroupLayout.PREFERRED_SIZE, 275, Short.MAX_VALUE)
             .addGroup(GroupLayout.Alignment.TRAILING, jpEquipamentoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -1005,10 +1012,10 @@ public class TelaPrincipalGUI extends JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jpCadastraAtendimentoLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
                             .addComponent(jbtCadastraAtendimento, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 95, GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtfAtendimentoCodigo, GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                            .addComponent(jtfAtendimentoCodigo, GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
                             .addComponent(jtfAtendimentoData)
                             .addComponent(jtfAtendimentoDuracao)
-                            .addComponent(jtfAtendimentoEvento, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))))
+                            .addComponent(jtfAtendimentoEvento, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jpCadastraAtendimentoLayout.setVerticalGroup(
@@ -1121,10 +1128,10 @@ public class TelaPrincipalGUI extends JFrame {
                         .addGap(16, 16, 16)
                         .addComponent(jLabel41)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtfSelecionarAtendimento, GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE))
+                        .addComponent(jtfSelecionarAtendimento, GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE))
                     .addGroup(jpConfigAtendimentoLayout.createSequentialGroup()
                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane6, GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane6, GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)))
                 .addGroup(jpConfigAtendimentoLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
                     .addGroup(jpConfigAtendimentoLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGroup(GroupLayout.Alignment.TRAILING, jpConfigAtendimentoLayout.createSequentialGroup()
@@ -1180,7 +1187,7 @@ public class TelaPrincipalGUI extends JFrame {
         jpAtendimento.setLayout(jpAtendimentoLayout);
         jpAtendimentoLayout.setHorizontalGroup(
             jpAtendimentoLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGap(0, 531, Short.MAX_VALUE)
+            .addGap(0, 514, Short.MAX_VALUE)
             .addGroup(jpAtendimentoLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
                 .addComponent(jTabbedPane4))
         );
@@ -1195,7 +1202,6 @@ public class TelaPrincipalGUI extends JFrame {
 
         TelaInicial.addTab("Atendimento", jpAtendimento);
 
-        jpOutro.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0)));
         jpOutro.setName("jpOutro");
 
         jTabbedPane2.setName("jTabbedPane2");
@@ -1245,7 +1251,7 @@ public class TelaPrincipalGUI extends JFrame {
                     .addComponent(jbtMostrarTodosAtendimentos, GroupLayout.Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 117, GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(GroupLayout.Alignment.TRAILING, jpInfosGeraisLayout.createSequentialGroup()
-                .addContainerGap(98, Short.MAX_VALUE)
+                .addContainerGap(78, Short.MAX_VALUE)
                 .addComponent(jLabel39, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jbtAlocacaoAutomatica, GroupLayout.PREFERRED_SIZE, 238, GroupLayout.PREFERRED_SIZE)
@@ -1274,7 +1280,7 @@ public class TelaPrincipalGUI extends JFrame {
                 .addGroup(jpInfosGeraisLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel39)
                     .addComponent(jbtAlocacaoAutomatica))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Informacoes", jpInfosGerais);
@@ -1296,7 +1302,7 @@ public class TelaPrincipalGUI extends JFrame {
 
         jbtGravar.setText("Gravar");
         jbtGravar.setName("jbtGravar");
-        jbtGravar.addActionListener(e -> jbtGravarActionPerformed());
+        jbtGravar.addActionListener( e-> jbtGravarActionPerformed());
 
         grupoGravacao.add(GravarJson);
         GravarJson.setText("JSON");
@@ -1357,7 +1363,7 @@ public class TelaPrincipalGUI extends JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel28, GroupLayout.PREFERRED_SIZE, 163, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                                 .addComponent(jLabel25, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(GravarJson)
@@ -1404,7 +1410,7 @@ public class TelaPrincipalGUI extends JFrame {
                     .addComponent(LerNormal)
                     .addComponent(jLabel27)
                     .addComponent(jLabel33))
-                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addComponent(jSeparator1, GroupLayout.PREFERRED_SIZE, 10, GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
                 .addComponent(jLabel36)
@@ -1423,6 +1429,65 @@ public class TelaPrincipalGUI extends JFrame {
         );
 
         jTabbedPane2.addTab("Leitura/Gravacao", jPanel2);
+
+        PAINELTEMA.setName("PAINELTEMA");
+
+        grupoThemeMode.add(jrbThemeDARK);
+        jrbThemeDARK.setText("Dark");
+        jrbThemeDARK.setName("jrbThemeDARK");
+
+        grupoThemeMode.add(jrbThemeLIGHT);
+        jrbThemeLIGHT.setText("Light");
+        jrbThemeLIGHT.setName("jrbThemeLIGHT");
+
+        jLabel42.setText("Tema");
+        jLabel42.setName("jLabel42");
+
+        grupoThemeMode.add(jrbThemePURPLE);
+        jrbThemePURPLE.setText("Purple");
+        jrbThemePURPLE.setName("jrbThemePURPLE");
+
+        jbtChangeTheme.setText("Selecionar");
+        jbtChangeTheme.setName("jbtChangeTheme");
+        jbtChangeTheme.addActionListener( e-> jbtChangeThemeActionPerformed());
+
+        GroupLayout PAINELTEMALayout = new GroupLayout(PAINELTEMA);
+        PAINELTEMA.setLayout(PAINELTEMALayout);
+        PAINELTEMALayout.setHorizontalGroup(
+            PAINELTEMALayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(PAINELTEMALayout.createSequentialGroup()
+                .addGap(204, 204, 204)
+                .addGroup(PAINELTEMALayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addComponent(jrbThemePURPLE)
+                    .addComponent(jrbThemeDARK)
+                    .addComponent(jrbThemeLIGHT))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(PAINELTEMALayout.createSequentialGroup()
+                .addGap(180, 180, 180)
+                .addComponent(jbtChangeTheme, GroupLayout.PREFERRED_SIZE, 117, GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(212, Short.MAX_VALUE))
+            .addGroup(GroupLayout.Alignment.TRAILING, PAINELTEMALayout.createSequentialGroup()
+                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel42)
+                .addGap(262, 262, 262))
+        );
+        PAINELTEMALayout.setVerticalGroup(
+            PAINELTEMALayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(PAINELTEMALayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jLabel42)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jrbThemeLIGHT)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jrbThemeDARK)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jrbThemePURPLE)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbtChangeTheme)
+                .addContainerGap(93, Short.MAX_VALUE))
+        );
+
+        jTabbedPane2.addTab("Configuracoes", PAINELTEMA);
 
         GroupLayout jpOutroLayout = new GroupLayout(jpOutro);
         jpOutro.setLayout(jpOutroLayout);
@@ -1469,7 +1534,7 @@ public class TelaPrincipalGUI extends JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                     .addComponent(jbtSairTelaPrincipal, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
@@ -1484,11 +1549,11 @@ public class TelaPrincipalGUI extends JFrame {
             .addGroup(jPanelTelaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelTelaLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                    .addComponent(TelaInicial, GroupLayout.Alignment.TRAILING)
+                    .addComponent(TelaInicial, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jPanel1, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(GroupLayout.Alignment.TRAILING, jPanelTelaLayout.createSequentialGroup()
-                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(197, Short.MAX_VALUE)
                 .addComponent(jlbCabecalhoInicio, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
                 .addGap(196, 196, 196))
         );
@@ -1498,7 +1563,7 @@ public class TelaPrincipalGUI extends JFrame {
                 .addContainerGap()
                 .addComponent(jlbCabecalhoInicio, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TelaInicial, GroupLayout.PREFERRED_SIZE, 296, Short.MAX_VALUE)
+                .addComponent(TelaInicial)
                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -1507,23 +1572,23 @@ public class TelaPrincipalGUI extends JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelTela, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE)
+            .addComponent(jPanelTela, GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanelTela, GroupLayout.DEFAULT_SIZE, 619, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanelTela, GroupLayout.DEFAULT_SIZE, 631, Short.MAX_VALUE)
+                .addGap(1, 1, 1))
         );
 
         getAccessibleContext().setAccessibleParent(jPanelTela);
 
         pack();
-    }
+    }                     
 
-    private void jbtSairTelaPrincipalActionPerformed() {
+    private void jbtSairTelaPrincipalActionPerformed() {                                                     
        System.exit(0);
-    }
+    }                                                    
 
     private void runJTexArea() {
         jtaSystemOut.setText(acmeRescue.mostrarRelatorio());
@@ -1532,7 +1597,7 @@ public class TelaPrincipalGUI extends JFrame {
         jtaListaEquipesDisponiveis.setText(acmeRescue.mostrarEquipesDisponiveis());
     }
     
-    private void jbtCadastraAtendimentoActionPerformed() {
+    private void jbtCadastraAtendimentoActionPerformed() {                                                       
         if(jtfAtendimentoCodigo.getText().isEmpty() ||
             jtfAtendimentoData.getText().isEmpty() ||
             jtfAtendimentoDuracao.getText().isEmpty() ||
@@ -1557,9 +1622,9 @@ public class TelaPrincipalGUI extends JFrame {
         jtfAtendimentoData.setText("");
         jtfAtendimentoDuracao.setText("");
         jtfAtendimentoEvento.setText("");
-    }
+    }                                                      
 
-    private void jbtCadastraBarcoActionPerformed() {
+    private void jbtCadastraBarcoActionPerformed() {                                                 
         if(jtfBarcoID.getText().isEmpty() ||
             jtfBarcoNome.getText().isEmpty() ||
             jtfBarcoCusto.getText().isEmpty() ||
@@ -1585,9 +1650,9 @@ public class TelaPrincipalGUI extends JFrame {
         jtfBarcoCusto.setText("");
         jtfBarcoCapacidade.setText("");
         jtfEquipeBarco.setText("");
-    }
+    }                                                
 
-    private void jbtCadastrarEquipeActionPerformed() {
+    private void jbtCadastrarEquipeActionPerformed() {                                                   
         if(jtfCodinomeEquipe.getText().equals("") ||
             jtfQuantidadeEquipe.getText().equals("") ||
             jtfLatitudeEquipe.getText().equals("") ||
@@ -1608,9 +1673,9 @@ public class TelaPrincipalGUI extends JFrame {
         jtfQuantidadeEquipe.setText("");
         jtfLatitudeEquipe.setText("");
         jtfLongitudeEquipe.setText("");
-    }
+    }                                                  
 
-    private void jbtCadastraCicloneActionPerformed() {
+    private void jbtCadastraCicloneActionPerformed() {                                                   
         if(jtfCodigoCiclone.getText().equals("") ||
             jtfDataCiclone.getText().equals("")||
             jtfLatitudeCiclone.getText().equals("") ||
@@ -1638,9 +1703,9 @@ public class TelaPrincipalGUI extends JFrame {
         jtfLongitudeCiclone.setText("");
         jtfVelocidadeCiclone.setText("");
         jtfPrecipitacaoCIclone.setText("");
-    }
+    }                                                  
 
-    private void jbtCadastraTerremotoActionPerformed() {
+    private void jbtCadastraTerremotoActionPerformed() {                                                     
         if(jtfTerremotoCodigo.getText().isEmpty() ||
             jtfTerremotoData.getText().isEmpty() ||
             jtfTerremotoLongitude.getText().isEmpty() ||
@@ -1666,9 +1731,9 @@ public class TelaPrincipalGUI extends JFrame {
         jtfTerremotoLongitude.setText("");
         jtfTerremotoEscala.setText("");
 
-    }
+    }                                                    
     
-    private void jbtSelecionarAtendimentoActionPerformed() {
+    private void jbtSelecionarAtendimentoActionPerformed() {                                                         
         if(jtfSelecionarAtendimento.getText().isEmpty()) return;
         Atendimento atendimentoStatus = null;
         try{
@@ -1698,8 +1763,9 @@ public class TelaPrincipalGUI extends JFrame {
         jrbExecutando.setEnabled(true);
         jrbFinalizado.setEnabled(true);
         jrbPendente.setEnabled(true);
-    }
-    private void jbtStatusConfirmarActionPerformed() {
+    }                                                        
+
+    private void jbtStatusConfirmarActionPerformed() {                                                   
         if((!jrbCancelado.isSelected()) &&
                 (!jrbExecutando.isSelected()) &&
                 (!jrbFinalizado.isSelected()) &&
@@ -1709,13 +1775,13 @@ public class TelaPrincipalGUI extends JFrame {
             atendimento.alterarStatus("CANCELADO");
         } else if (jrbExecutando.isSelected()) {
             if (atendimento.getEquipeAlocada() == null) {
-                jtaSystemOut.append("\nAtendimento nao tem equipe alocada para ser executado!\n");
+                jtaSystemOut.append("Atendimento nao tem equipe alocada para ser executado!");
             } else {
             atendimento.alterarStatus("EXECUTANDO");
             }
         } else if (jrbFinalizado.isSelected()) {
             if(atendimento.getEquipeAlocada() == null) {
-                jtaSystemOut.append("\nAtendimento nao tem equipe alocada para ser finalizado!\n");
+                jtaSystemOut.append("Atendimento nao tem equipe alocada para ser finalizado!");
             } else {
             atendimento.alterarStatus("FINALIZADO");
             }
@@ -1736,35 +1802,34 @@ public class TelaPrincipalGUI extends JFrame {
         jtaAtendimentoSelcionado.setText("");
         jtfSelecionarAtendimento.setText("");
         
-    }
+    }                                                  
 
-    private void jbtAlocacaoAutomaticaActionPerformed() {
+    private void jbtAlocacaoAutomaticaActionPerformed() {                                                      
         acmeRescue.alocacaoAutomatica();
-        runJTexArea();
-        jtaSystemOut.setText("Alocacao automatica executada com sucesso!\n");
-    }
+        jtaListaAtendimentosDisponiveis.setText(acmeRescue.getListaAtendimentos());
+    }                                                     
 
-    private void jbtMostrarTodosAtendimentosActionPerformed() {
+    private void jbtMostrarTodosAtendimentosActionPerformed() {                                                            
         if (!jtaSystemOut.getText().contentEquals(acmeRescue.mostrarTodosAtendimentos())) jtaSystemOut.setText(acmeRescue.mostrarTodosAtendimentos());
-    }
+    }                                                           
 
-    private void jbtMostrarTodosEquipamentosActionPerformed() {
+    private void jbtMostrarTodosEquipamentosActionPerformed() {                                                            
         if (!jtaSystemOut.getText().contentEquals(acmeRescue.mostrarTodosEquipamentos())) jtaSystemOut.setText(acmeRescue.mostrarTodosEquipamentos());
-    }
+    }                                                           
 
-    private void jbtMostrarTodasEquipesActionPerformed() {
+    private void jbtMostrarTodasEquipesActionPerformed() {                                                       
         if (!jtaSystemOut.getText().contentEquals(acmeRescue.mostrarTodasEquipes())) jtaSystemOut.setText(acmeRescue.mostrarTodasEquipes());
-    }
+    }                                                      
 
-    private void jbtMostrarTodosEventosActionPerformed() { 
+    private void jbtMostrarTodosEventosActionPerformed() {                                                       
         if(!jtaSystemOut.getText().contentEquals(acmeRescue.mostrarTodosEventos())) jtaSystemOut.setText(acmeRescue.mostrarTodosEventos());
-    }
+    }                                                      
 
-    private void jbtMostrarRelatorioActionPerformed() {
+    private void jbtMostrarRelatorioActionPerformed() {                                                    
         if(!jtaSystemOut.getText().contentEquals(acmeRescue.mostrarRelatorio())) jtaSystemOut.setText(acmeRescue.mostrarRelatorio());
-    }
+    }                                                   
 
-    private void jtfCadastraCaminhaoActionPerformed() {
+    private void jbtCadastraCaminhaoActionPerformed() {                                                    
         if(jtfCaminhaoID.getText().isEmpty() ||
             jtfCaminhaoNome.getText().isEmpty() ||
             jtfCaminhaoCusto.getText().isEmpty() ||
@@ -1787,9 +1852,9 @@ public class TelaPrincipalGUI extends JFrame {
         jtfCaminhaoCusto.setText("");
         jtfCaminhaoCapacidade.setText("");
         jtfEquipeCaminhaoCarga.setText("");
-    }
+    }                                                   
 
-    private void jbtCadastraEscavadeiraActionPerformed() {
+    private void jbtCadastraEscavadeiraActionPerformed() {                                                       
         if (jtfEscavadeiraID.getText().isEmpty()
                 || jtfEscavadeiraNome.getText().isEmpty()
                 || jtfEscavadeiraCusto.getText().isEmpty()
@@ -1825,9 +1890,9 @@ public class TelaPrincipalGUI extends JFrame {
         } else {
             jtaSystemOut.append("Combustivel invalido. \n");
         }
-    }
+    }                                                      
 
-    private void jbtCadastrarSecaActionPerformed() {
+    private void jbtCadastrarSecaActionPerformed() {                                                 
         if(jtfSecaCodigo.getText().isEmpty() ||
             jtfSecaData.getText().isEmpty() ||
             jtfSecaLatitude.getText().isEmpty() ||
@@ -1852,13 +1917,13 @@ public class TelaPrincipalGUI extends JFrame {
         jtfSecaLatitude.setText("");
         jtfSecaLongitude.setText("");
         jtfSecaEstiagem.setText("");
-    }
+    }                                                
 
-    private void jbtLimparActionPerformed() {
+    private void jbtLimparActionPerformed() {                                          
         jtaSystemOut.setText("");
-    }
+    }                                         
 
-    private void jbtGravarActionPerformed() {
+    private void jbtGravarActionPerformed() {                                          
         if(!GravarJson.isSelected() && !GravarNormal.isSelected()) return;
         if (jtfGravacao.getText().isEmpty()) {
             jtaSystemOut.append("\nInsira o nome do arquivo a ser lido.\n");
@@ -1872,9 +1937,9 @@ public class TelaPrincipalGUI extends JFrame {
         jtaSystemOut.append("\nGravacao efetuada com sucesso!\n");
         jtfGravacao.setText("");
         grupoGravacao.clearSelection();
-    }
+    }                                         
 
-    private void jbtLerActionPerformed() {
+    private void jbtLerActionPerformed() {                                       
         if (!LerJson.isSelected() && !LerNormal.isSelected()) return;
         if(jtfLeitura.getText().isEmpty()) {
             jtaSystemOut.append("\nInsira o nome do arquivo a ser lido.\n");
@@ -1885,21 +1950,132 @@ public class TelaPrincipalGUI extends JFrame {
         } else if (LerJson.isSelected()) {
             new LeituraDeArquivosJSON(jtfLeitura.getText(), acmeRescue);
         }
-        jtaSystemOut.setText("\nLeitura efetuada com sucesso!\n");
+        jtaSystemOut.append("\nLeitura efetuada com sucesso!\n");
         grupoLeitura.clearSelection();
         runJTexArea();
         jtfLeitura.setText("");
+    }                                      
+
+    private void setColor(Color color) {
+        GravarJson.setBackground(color);
+        GravarNormal.setBackground(color);
+        LerJson.setBackground(color);
+        LerNormal.setBackground(color);
+        TelaInicial.setBackground(color);
+        jLabel1.setBackground(color);
+        jLabel10.setBackground(color);
+        jLabel11.setBackground(color);
+        jLabel12.setBackground(color);
+        jLabel123.setBackground(color);
+        jLabel124.setBackground(color);
+        jLabel13.setBackground(color);
+        jLabel14.setBackground(color);
+        jLabel15.setBackground(color);
+        jLabel16.setBackground(color);
+        jLabel17.setBackground(color);
+        jLabel18.setBackground(color);
+        jLabel19.setBackground(color);
+        jLabel2.setBackground(color);
+        jLabel20.setBackground(color);
+        jLabel21.setBackground(color);
+        jLabel22.setBackground(color);
+        jLabel23.setBackground(color);
+        jLabel24.setBackground(color);
+        jLabel25.setBackground(color);
+        jLabel26.setBackground(color);
+        jLabel27.setBackground(color);
+        jLabel28.setBackground(color);
+        jLabel29.setBackground(color);
+        jLabel3.setBackground(color);
+        jLabel30.setBackground(color);
+        jLabel31.setBackground(color);
+        jLabel32.setBackground(color);
+        jLabel33.setBackground(color);
+        jLabel34.setBackground(color);
+        jLabel35.setBackground(color);
+        jLabel36.setBackground(color);
+        jLabel37.setBackground(color);
+        jLabel38.setBackground(color);
+        jLabel39.setBackground(color);
+        jLabel4.setBackground(color);
+        jLabel40.setBackground(color);
+        jLabel41.setBackground(color);
+        jLabel42.setBackground(color);
+        jLabel47.setBackground(color);
+        jLabel48.setBackground(color);
+        jLabel49.setBackground(color);
+        jLabel5.setBackground(color);
+        jLabel50.setBackground(color);
+        jLabel51.setBackground(color);
+        jLabel6.setBackground(color);
+        jLabel7.setBackground(color);
+        jLabel8.setBackground(color);
+        jLabel9.setBackground(color);
+        jPanel1.setBackground(color);
+        jPanel2.setBackground(color);
+        jPanel3.setBackground(color);
+        PAINELTEMA.setBackground(color);
+        jPanelCadastraEquipe.setBackground(color);
+        jPanelTela.setBackground(color);
+        jScrollPane1.setBackground(color);
+        jScrollPane2.setBackground(color);
+        jScrollPane3.setBackground(color);
+        jScrollPane5.setBackground(color);
+        jScrollPane6.setBackground(color);
+        jSeparator1.setBackground(color);
+        jSeparator2.setBackground(color);
+        jTabbedPane2.setBackground(color);
+        jTabbedPane3.setBackground(color);
+        jTabbedPane4.setBackground(color);
+        jlbCabecalhoInicio.setBackground(color);
+        jlbCodinomeEquipe.setBackground(color);
+        jlbLatitudeEquipe.setBackground(color);
+        jlbLongitudeEquipe.setBackground(color);
+        jlbQuantidadeEquipe.setBackground(color);
+        jpAtendimento.setBackground(color);
+        jpCadastraAtendimento.setBackground(color);
+        jpCadastraBarco.setBackground(color);
+        jpCadastraCiclone.setBackground(color);
+        jpCadastraEscavadeira.setBackground(color);
+        jpCadastraSeca.setBackground(color);
+        jpCadastraTerremoto.setBackground(color);
+        jpCaminhaoCarga.setBackground(color);
+        jpConfigAtendimento.setBackground(color);
+        jpEquipamento.setBackground(color);
+        jpEvento.setBackground(color);
+        jpInfosGerais.setBackground(color);
+        jpOutro.setBackground(color);
+        jrbCancelado.setBackground(color);
+        jrbExecutando.setBackground(color);
+        jrbFinalizado.setBackground(color);
+        jrbPendente.setBackground(color);
+        jrbThemeDARK.setBackground(color);
+        jrbThemeLIGHT.setBackground(color);
+        jrbThemePURPLE.setBackground(color);
+        jtpCadastraEquipamento.setBackground(color);
     }
     
-    
+    private void jbtChangeThemeActionPerformed() {                                               
+        if(!jrbThemeDARK.isSelected() && !jrbThemeLIGHT.isSelected() && !jrbThemePURPLE.isSelected()) return;
+        if(jrbThemeDARK.isSelected()) {
+            setColor(new Color(102, 102, 102));
+        } else if(jrbThemeLIGHT.isSelected()) {
+            setColor(new Color(240, 240, 240));
+        } else if(jrbThemePURPLE.isSelected()) {
+            setColor(new Color(102, 0, 255));
+        }
+    }                                              
+                        
     private JRadioButton GravarJson;
     private JRadioButton GravarNormal;
     private JRadioButton LerJson;
     private JRadioButton LerNormal;
+    private JPanel PAINELTEMA;
     private JTabbedPane TelaInicial;
     private ButtonGroup buttonGroup;
     private ButtonGroup grupoGravacao;
     private ButtonGroup grupoLeitura;
+    private ButtonGroup grupoThemeMode;
     private JLabel jLabel1;
     private JLabel jLabel10;
     private JLabel jLabel11;
@@ -1938,6 +2114,7 @@ public class TelaPrincipalGUI extends JFrame {
     private JLabel jLabel4;
     private JLabel jLabel40;
     private JLabel jLabel41;
+    private JLabel jLabel42;
     private JLabel jLabel47;
     private JLabel jLabel48;
     private JLabel jLabel49;
@@ -1971,6 +2148,7 @@ public class TelaPrincipalGUI extends JFrame {
     private JButton jbtCadastraTerremoto;
     private JButton jbtCadastrarEquipe;
     private JButton jbtCadastrarSeca;
+    private JButton jbtChangeTheme;
     private JButton jbtGravar;
     private JButton jbtLer;
     private JButton jbtLimpar;
@@ -2004,6 +2182,9 @@ public class TelaPrincipalGUI extends JFrame {
     private JRadioButton jrbExecutando;
     private JRadioButton jrbFinalizado;
     private JRadioButton jrbPendente;
+    private JRadioButton jrbThemeDARK;
+    private JRadioButton jrbThemeLIGHT;
+    private JRadioButton jrbThemePURPLE;
     private JTextArea jtaAtendimentoSelcionado;
     private JTextArea jtaListaAtendimentosDisponiveis;
     private JTextArea jtaListaEquipesDisponiveis;
@@ -2017,7 +2198,7 @@ public class TelaPrincipalGUI extends JFrame {
     private JTextField jtfBarcoCusto;
     private JTextField jtfBarcoID;
     private JTextField jtfBarcoNome;
-    private JButton jtfCadastraCaminhao;
+    private JButton jbtCadastraCaminhao;
     private JTextField jtfCaminhaoCapacidade;
     private JTextField jtfCaminhaoCusto;
     private JTextField jtfCaminhaoID;
@@ -2054,4 +2235,5 @@ public class TelaPrincipalGUI extends JFrame {
     private JTextField jtfTerremotoLongitude;
     private JTextField jtfVelocidadeCiclone;
     private JTabbedPane jtpCadastraEquipamento;
+    // End of variables declaration                   
 }
