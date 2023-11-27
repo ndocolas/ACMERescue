@@ -5,13 +5,13 @@ import Eventos.Evento;
 
 public class Atendimento {
 
-     int codigo;
-     String dataInicio;
-     int duracao;
-     String status;
+    private int codigo;
+    private String dataInicio;
+    private int duracao;
+    private String status;
 
-     Evento evento;
-     Equipe equipeAlocada;
+    private Evento evento;
+    private Equipe equipeAlocada;
 
     public Atendimento(int codigo, String dataInicio, int duracao, String status, Evento evento) {
         this.codigo = codigo;
@@ -101,8 +101,7 @@ public class Atendimento {
     }
 
     public double calculaPrecoAtendimento() {
-        return equipeAlocada.calcularPrecoEquipe(duracao) + equipeAlocada.calculaPrecoEquipamento(duracao) +
-                equipeAlocada.calculaPrecoDeslocamento(evento.getLatitude(), evento.getLongitude());
+        return equipeAlocada.calculaPrecoTotal(duracao, evento.getLatitude(), evento.getLongitude());
     }
 
     public String getDescricao() {

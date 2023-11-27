@@ -9,10 +9,10 @@ public class Equipe {
 
 	private String codinome;
 	private int quantidade;
-        private double latitude;
-        private double longitude;
-        private boolean isAlocada;
-        private ArrayList<Equipamento> listaEquipamentos;
+    private double latitude;
+    private double longitude;
+    private boolean isAlocada;
+    private ArrayList<Equipamento> listaEquipamentos;
 
 	public Equipe(String codinome, int quantidade, double latitude, double longitude) {
         this.codinome = codinome;
@@ -22,12 +22,6 @@ public class Equipe {
         listaEquipamentos = new ArrayList<>();
         isAlocada = false;
     }
-
-    public String getCodinome() {return codinome;}
-    public int getQuantidade() {return quantidade;}
-    public double getLatitude() {return latitude;}
-    public double getLongitude() {return longitude;}
-
     
     public boolean getIsAlocada() {return isAlocada;}
     public void setIsAlocada(boolean tipo) {isAlocada = tipo;}
@@ -55,19 +49,17 @@ public class Equipe {
         return distance;
     }
     
-    public double calcularPrecoEquipe(int duracao) {
-        return 250*duracao*quantidade;
+    public double calculaPrecoTotal(int duracao, double lat, double lon) {
+        return (250*duracao*quantidade) + (listaEquipamentos.stream().
+                mapToDouble(e->e.getCustoDia()).sum() * duracao) + (calculaDistancia(lat, lon) +
+                 (100 * quantidade * (0.1 * listaEquipamentos.stream().mapToDouble(e -> e.getCustoDia()).sum())));
     }
-    
-    public double calculaPrecoEquipamento(int duracao) {
-        return listaEquipamentos.stream().
-                mapToDouble(e->e.getCustoDia()).sum() * duracao;
-    }
-    
-    public double calculaPrecoDeslocamento(double lat, double lon) {
-        return calculaDistancia(lat, lon) * (100 * quantidade * (0.1 * listaEquipamentos.stream().mapToDouble(e -> e.getCustoDia()).sum()));
-    }
-    
+
+    public String getCodinome() {return codinome;}
+    public int getQuantidade() {return quantidade;}
+    public double getLatitude() {return latitude;}
+    public double getLongitude() {return longitude;}
+
     public String getDescricao() {
         return "\n   Codinome: " + codinome
                 + "\n   Quantidade: " + quantidade

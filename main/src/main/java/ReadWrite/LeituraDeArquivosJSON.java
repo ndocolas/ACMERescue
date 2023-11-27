@@ -45,9 +45,7 @@ public class LeituraDeArquivosJSON {
             for(JsonElement e : jsonArray) {
                 acme.adicionarEquipe(gson.fromJson(e,Equipe.class));
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        } catch (IOException e) {}
     }   
     
     public void lerAtendimentosJson() {
@@ -64,9 +62,7 @@ public class LeituraDeArquivosJSON {
                 Evento codigoEvento = acme.pesquisarCodigoEvento(e.getAsJsonObject().get("evento").getAsString());
                 acme.adicionarAtendimento(new Atendimento(codigo, data, duracao, status, codigoEvento));
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        } catch (IOException e) {}
     }
     
     public void lerEventosJson() {
@@ -94,9 +90,7 @@ public class LeituraDeArquivosJSON {
                         break;
                 }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        } catch (Exception e) {}
 
     }
     
