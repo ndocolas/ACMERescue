@@ -116,7 +116,7 @@ public class Atendimento {
                         + "\nDuracao: " + duracao + " dias"
                         + "\nStatus: " + status
                         + "\nEvento: " + evento.getDescricao()
-                        + "\nCusto Total: " + calculaPrecoAtendimento()
+                        + "\nCusto Total: " + String.format("%.2f", calculaPrecoAtendimento())
                         + "\nEquipe: " + equipeAlocada.getDescricao();
 
     }
