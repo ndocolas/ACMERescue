@@ -38,6 +38,10 @@ public class Atendimento {
     public void alterarStatus(String status) {
         switch (status.toUpperCase()) {
             case "PENDENTE" -> {
+                if (equipeAlocada != null) {
+                    equipeAlocada.setIsAlocada(false);
+                    equipeAlocada = null;
+                }
                 this.status = status;
                 break;
             }
