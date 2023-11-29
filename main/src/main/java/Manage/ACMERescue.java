@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.Queue;
 
 import Atendimento.Atendimento;
-import Equipe.Equipamentos.Equipamento;
-import Equipe.Equipamentos.Tipos.Barco;
-import Equipe.Equipamentos.Tipos.CaminhaoTanque;
-import Equipe.Equipamentos.Tipos.Escavadeira;
+import Equipamentos.Equipamento;
+import Equipamentos.Tipos.Barco;
+import Equipamentos.Tipos.CaminhaoTanque;
+import Equipamentos.Tipos.Escavadeira;
 import Equipe.Equipe;
 import Eventos.Evento;
 import Eventos.Tipos.Ciclone;

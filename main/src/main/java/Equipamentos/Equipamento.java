@@ -1,4 +1,4 @@
-package Equipe.Equipamentos;
+package Equipamentos;
 
 import Equipe.Equipe;
 

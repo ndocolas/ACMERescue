@@ -1,9 +1,9 @@
 package ReadWrite;
 
 import Atendimento.Atendimento;
-import Equipe.Equipamentos.Tipos.Barco;
-import Equipe.Equipamentos.Tipos.CaminhaoTanque;
-import Equipe.Equipamentos.Tipos.Escavadeira;
+import Equipamentos.Tipos.Barco;
+import Equipamentos.Tipos.CaminhaoTanque;
+import Equipamentos.Tipos.Escavadeira;
 import Equipe.Equipe;
 import java.io.BufferedReader;
 import java.io.File;

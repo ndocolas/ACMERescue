@@ -1,6 +1,6 @@
-package Equipe.Equipamentos.Tipos;
+package Equipamentos.Tipos;
 
-import Equipe.Equipamentos.Equipamento;
+import Equipamentos.Equipamento;
 import Equipe.Equipe;
 
 public class Barco extends Equipamento {

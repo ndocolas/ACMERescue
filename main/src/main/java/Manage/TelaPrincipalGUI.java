@@ -22,11 +22,11 @@ import javax.swing.LayoutStyle;
 import javax.swing.WindowConstants;
 
 import Atendimento.Atendimento;
+import Equipamentos.Equipamento;
+import Equipamentos.Tipos.Barco;
+import Equipamentos.Tipos.CaminhaoTanque;
+import Equipamentos.Tipos.Escavadeira;
 import Equipe.Equipe;
-import Equipe.Equipamentos.Equipamento;
-import Equipe.Equipamentos.Tipos.Barco;
-import Equipe.Equipamentos.Tipos.CaminhaoTanque;
-import Equipe.Equipamentos.Tipos.Escavadeira;
 import Eventos.Evento;
 import Eventos.Tipos.Ciclone;
 import Eventos.Tipos.Seca;
@@ -1631,13 +1631,21 @@ public class TelaPrincipalGUI extends JFrame {
             jtfBarcoCapacidade.getText().isEmpty() ||
                 jtfEquipeBarco.getText().isEmpty()) return;
         Equipamento equipamento = null;
+        Equipe e = null;
+        try {
+            e = acmeRescue.pesquisarCodigoEquipe(jtfEquipeBarco.getText());
+        } catch(Exception ex) {}
+        if(e == null) {
+            jtaSystemOut.append("\nEquipe invalida");
+            return;
+        }
         try {
             equipamento = new Barco(Integer.parseInt(jtfBarcoID.getText()),
                 jtfBarcoNome.getText(),
                 Double.parseDouble(jtfBarcoCusto.getText()),
                 Integer.parseInt(jtfBarcoCapacidade.getText()),
-            acmeRescue.pesquisarCodigoEquipe(jtfEquipeBarco.getText()));
-        } catch(NumberFormatException e) {
+            e);
+        } catch(NumberFormatException e1) {
             jtaSystemOut.append("\nDados invalidos.\n");
             return;
         }
@@ -1829,6 +1837,7 @@ public class TelaPrincipalGUI extends JFrame {
     private void jbtAlocacaoAutomaticaActionPerformed() {                                                      
         acmeRescue.alocacaoAutomatica();
         jtaListaAtendimentosDisponiveis.setText(acmeRescue.getListaAtendimentos());
+        jtaSystemOut.append("\nAlocacao efetuada com sucesso!");
     }                                                     
 
     private void jbtMostrarTodosAtendimentosActionPerformed() {                                                            
@@ -1858,13 +1867,21 @@ public class TelaPrincipalGUI extends JFrame {
             jtfCaminhaoCapacidade.getText().isEmpty()||
             jtfEquipeCaminhaoCarga.getText().isEmpty()) return;
         Equipamento equipamento = null;
+                Equipe e = null;
+        try {
+            e = acmeRescue.pesquisarCodigoEquipe(jtfEquipeCaminhaoCarga.getText());
+        } catch(Exception ex) {}
+        if(e == null) {
+            jtaSystemOut.append("\nEquipe invalida");
+            return;
+        }
         try{
             equipamento = new CaminhaoTanque(Integer.parseInt(jtfCaminhaoID.getText()),
                 jtfCaminhaoNome.getText(),
                 Double.parseDouble(jtfCaminhaoCusto.getText()),
                 Double.parseDouble(jtfCaminhaoCapacidade.getText()),
-                acmeRescue.pesquisarCodigoEquipe(jtfEquipeCaminhaoCarga.getText()));
-        } catch(NumberFormatException e) {}
+                e);
+        } catch(NumberFormatException e1) {}
         if(acmeRescue.adicionarEquipamento(equipamento)) {
             jtaSystemOut.append("\nEquipamento adicionado: " + equipamento.getId() + "\n");
         }
@@ -1886,6 +1903,14 @@ public class TelaPrincipalGUI extends JFrame {
             return;
         }
         Equipamento equipamento = null;
+                Equipe e = null;
+        try {
+            e = acmeRescue.pesquisarCodigoEquipe(jtfEscavadeiraEquipe.getText());
+        } catch(Exception ex) {}
+        if(e == null) {
+            jtaSystemOut.append("\nEquipe invalida");
+            return;
+        }
         if (jtfEscavadeiraCombustivel.getText().equalsIgnoreCase("GASOLINA")
                 || jtfEscavadeiraCombustivel.getText().equalsIgnoreCase("DIESEL")
                 || jtfEscavadeiraCombustivel.getText().equalsIgnoreCase("ALCOOL")) {
@@ -1895,8 +1920,8 @@ public class TelaPrincipalGUI extends JFrame {
                         Double.parseDouble(jtfEscavadeiraCusto.getText()),
                         jtfEscavadeiraCombustivel.getText(),
                         Double.parseDouble(jtfEscavadeiraCarga.getText()),
-                        acmeRescue.pesquisarCodigoEquipe(jtfEscavadeiraEquipe.getText()));
-            } catch (NumberFormatException e) {
+                        e);
+            } catch (NumberFormatException e1) {
             }
             if (acmeRescue.adicionarEquipamento(equipamento)) {
                 jtaSystemOut.append("\nEquipamento adicionado: " + equipamento.getId() + "\n");

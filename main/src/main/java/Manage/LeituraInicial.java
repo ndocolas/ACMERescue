@@ -127,7 +127,7 @@ public class LeituraInicial extends JFrame {
        if(jtfLeitura.getText().isEmpty()) return;
        new LeituraDeArquivos(jtfLeitura.getText(), acmeRescue);
        if(acmeRescue.mostrarRelatorio().equals("Nenhum dado cadastrado.")) {
-           jtaSaida.append("Dados incompletos.\n");
+           jtaSaida.append("Dados invalidos.\n");
            return;
        }
        new TelaPrincipalGUI(acmeRescue);

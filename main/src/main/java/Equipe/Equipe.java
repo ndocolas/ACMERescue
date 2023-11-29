@@ -3,7 +3,7 @@ package Equipe;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-import Equipe.Equipamentos.Equipamento;
+import Equipamentos.Equipamento;
 
 public class Equipe {
 

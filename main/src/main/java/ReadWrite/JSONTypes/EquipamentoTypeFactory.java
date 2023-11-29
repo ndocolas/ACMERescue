@@ -1,15 +1,17 @@
 package ReadWrite.JSONTypes;
 
-import Equipe.Equipamentos.Equipamento;
-import Equipe.Equipamentos.Tipos.Barco;
-import Equipe.Equipamentos.Tipos.CaminhaoTanque;
-import Equipe.Equipamentos.Tipos.Escavadeira;
 import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+
+import Equipamentos.Equipamento;
+import Equipamentos.Tipos.Barco;
+import Equipamentos.Tipos.CaminhaoTanque;
+import Equipamentos.Tipos.Escavadeira;
+
 import java.io.IOException;
 
 public class EquipamentoTypeFactory implements TypeAdapterFactory {
