@@ -1735,11 +1735,17 @@ public class TelaPrincipalGUI extends JFrame {
     
     private void jbtSelecionarAtendimentoActionPerformed() {                                                         
         if(jtfSelecionarAtendimento.getText().isEmpty()) return;
-        Atendimento atendimentoStatus = null;
         try{
-            atendimentoStatus = acmeRescue.pesquisarCodigoAtendimento(Integer.parseInt(jtfSelecionarAtendimento.getText()));
-            
-        switch(atendimentoStatus.getStatus().toUpperCase()) {
+            atendimento = acmeRescue.pesquisarCodigoAtendimento(Integer.parseInt(jtfSelecionarAtendimento.getText()));
+        } catch (NumberFormatException | NullPointerException e) {
+            if(!jtaSystemOut.getText().contains("Codigo invalido.\n")) jtaSystemOut.append("Codigo invalido.\n");
+            return;
+        }         
+        if(atendimento == null) {
+            jtaSystemOut.append("\nAtendimento invalido.");
+            return;
+        }   
+        switch(atendimento.getStatus().toUpperCase()) {
             case "PENDENTE" -> {jrbPendente.setSelected(true);}
             case "EXECUTANDO" -> {jrbExecutando.setSelected(true);}
             case "FINALIZADO" -> {
@@ -1752,36 +1758,50 @@ public class TelaPrincipalGUI extends JFrame {
             }
             default -> {return;}
         }
-        } catch (NumberFormatException | NullPointerException e) {
-            if(!jtaSystemOut.getText().contains("Codigo invalido.\n")) jtaSystemOut.append("Codigo invalido.\n");
-            return;
-        }
         jtaAtendimentoSelcionado.setEnabled(true);
-        jtaAtendimentoSelcionado.setText(atendimentoStatus.getDescricao());
+        jtaAtendimentoSelcionado.setText(atendimento.getDescricao());
         jbtStatusConfirmar.setEnabled(true);
         jrbCancelado.setEnabled(true);
         jrbExecutando.setEnabled(true);
         jrbFinalizado.setEnabled(true);
         jrbPendente.setEnabled(true);
+        jtfSelecionarAtendimento.setEnabled(false);
+        jbtSelecionarAtendimento.setEnabled(false);
     }                                                        
+    
+    private Atendimento atendimento = null;
 
     private void jbtStatusConfirmarActionPerformed() {                                                   
         if((!jrbCancelado.isSelected()) &&
                 (!jrbExecutando.isSelected()) &&
                 (!jrbFinalizado.isSelected()) &&
                 (!jrbPendente.isSelected())) return;
-        Atendimento atendimento = acmeRescue.pesquisarCodigoAtendimento(Integer.parseInt(jtfSelecionarAtendimento.getText()));
+        if(atendimento == null) {
+            jbtStatusConfirmar.setEnabled(false);
+            jrbCancelado.setEnabled(false);
+            jrbExecutando.setEnabled(false);
+            jrbFinalizado.setEnabled(false);
+            jrbPendente.setEnabled(false);
+            buttonGroup.clearSelection();
+    
+            jtaAtendimentoSelcionado.setText("");
+            jtfSelecionarAtendimento.setText("");
+            jtfSelecionarAtendimento.setEnabled(true);
+            jbtSelecionarAtendimento.setEnabled(true);
+            jtaSystemOut.append("\nAtendimento invalido.");
+            return;
+        }
         if (jrbCancelado.isSelected()) {
             atendimento.alterarStatus("CANCELADO");
         } else if (jrbExecutando.isSelected()) {
             if (atendimento.getEquipeAlocada() == null) {
-                jtaSystemOut.append("Atendimento nao tem equipe alocada para ser executado!");
+                jtaSystemOut.append("\nAtendimento nao tem equipe alocada para ser executado!");
             } else {
             atendimento.alterarStatus("EXECUTANDO");
             }
         } else if (jrbFinalizado.isSelected()) {
             if(atendimento.getEquipeAlocada() == null) {
-                jtaSystemOut.append("Atendimento nao tem equipe alocada para ser finalizado!");
+                jtaSystemOut.append("\nAtendimento nao tem equipe alocada para ser finalizado!");
             } else {
             atendimento.alterarStatus("FINALIZADO");
             }
@@ -1801,6 +1821,8 @@ public class TelaPrincipalGUI extends JFrame {
 
         jtaAtendimentoSelcionado.setText("");
         jtfSelecionarAtendimento.setText("");
+        jtfSelecionarAtendimento.setEnabled(true);
+        jbtSelecionarAtendimento.setEnabled(true);
         
     }                                                  
 

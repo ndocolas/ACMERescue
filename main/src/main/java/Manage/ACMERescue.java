@@ -75,23 +75,24 @@ public class ACMERescue {
     }
 
     public void alocacaoAutomatica() {
-        if (listaAtendimento.isEmpty()) return;
-        for (Equipe e : listaEquipe) {
-            if (e.getIsAlocada()) continue;
-            for (Atendimento at : listaAtendimento) {
-                boolean cancelar = true;
-                if (at.getEquipeAlocada() == null) {
-                if (e.calculaDistancia(at.getEvento().getLatitude(), at.getEvento().getLongitude()) < 5000) {
-                    e.setIsAlocada(true);
+        if (listaAtendimento.isEmpty() || listaEquipe.isEmpty()) return;
+        for (Atendimento at : listaAtendimento) {
+            if(at.getStatus().equals("CANCELADO") || at.getStatus().equals("FINALIZADO")) continue;
+            if(at.getEquipeAlocada() != null) continue;
+            boolean cancelar = true;
+            for (Equipe e : listaEquipe) {
+                if(e.getIsAlocada()) continue;
+                if(e.calculaDistancia(at.getEvento().getLatitude(), at.getEvento().getLongitude()) <= 5000) {
                     at.setEquipe(e);
+                    e.setIsAlocada(true);
                     cancelar = false;
                     break;
-                }
-                if(cancelar) {
-                    at.alterarStatus("CANCELADO");
+                } else {
                     continue;
                 }
-                } else continue;
+            }
+            if(cancelar) {
+                at.alterarStatus("CANCELADO");
             }
         }
     }
