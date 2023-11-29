@@ -26,7 +26,6 @@ public class LeituraDeArquivos {
         this.acmeRescue = acmerescue;
         nomeArquivo=arquivo;
         readAll();
-        acmeRescue.alocacaoAutomatica();
     }
     
     private void readAll() {
