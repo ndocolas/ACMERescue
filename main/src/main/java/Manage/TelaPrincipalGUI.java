@@ -1757,11 +1757,11 @@ public class TelaPrincipalGUI extends JFrame {
             case "PENDENTE" -> {jrbPendente.setSelected(true);}
             case "EXECUTANDO" -> {jrbExecutando.setSelected(true);}
             case "FINALIZADO" -> {
-                if(!jtaSystemOut.getText().contains("Atendimento finalizado.\n")) jtaSystemOut.append("Atendimento finalizado.\n");
+                jtaSystemOut.append("\nAtendimento finalizado.\n");
                 return;
             }
             case "CANCELADO" -> {
-                if (!jtaSystemOut.getText().contains("Atendimento cancelado.\n")) jtaSystemOut.append("Atendimento cancelado.\n");
+                jtaSystemOut.append("\nAtendimento cancelado.\n");
                 return;
             }
             default -> {return;}
