@@ -13,13 +13,13 @@ public class Atendimento {
     private Evento evento;
     private Equipe equipeAlocada;
 
-    public Atendimento(int codigo, String dataInicio, int duracao, String status, Evento evento) {
+    public Atendimento(int codigo, String dataInicio, int duracao, Evento evento, Equipe equipe) {
         this.codigo = codigo;
         this.dataInicio = dataInicio;
         this.duracao = duracao;
         this.evento = evento;
-        this.status = status;
-        equipeAlocada = null;
+        equipeAlocada = equipe;
+        status = "EXECUTANDO";
     }
 
     public Atendimento(int codigo, String dataInicio, int duracao, Evento evento) {

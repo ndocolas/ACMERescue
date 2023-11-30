@@ -25,7 +25,7 @@ public class GravacaoDeArquivos {
     }
     
     private void gravarEquipe() {
-        File file = new File("ReadWrite/ESCRITA/NORMAL/" + arquivo + "-EQUIPES.csv");
+        File file = new File("ReadWrite/" + arquivo + "-EQUIPES.csv");
         try {
             if (!file.exists()) {
                 file.createNewFile();
@@ -38,7 +38,7 @@ public class GravacaoDeArquivos {
     }
     
     private void gravarAtendimento() {
-        File file = new File("ReadWrite/ESCRITA/NORMAL/" + arquivo + "-ATENDIMENTOS.csv");
+        File file = new File("ReadWrite/" + arquivo + "-ATENDIMENTOS.csv");
         try {
             if (!file.exists()) {
                 file.createNewFile();
@@ -52,7 +52,7 @@ public class GravacaoDeArquivos {
     }
     
     private void gravarEquipamento() {
-        File file = new File("ReadWrite/ESCRITA/NORMAL/" + arquivo + "-EQUIPAMENTOS.csv");
+        File file = new File("ReadWrite/" + arquivo + "-EQUIPAMENTOS.csv");
         try {
             if (!file.exists()) {
                 file.createNewFile();
@@ -66,7 +66,7 @@ public class GravacaoDeArquivos {
     }
     
     private void gravarEvento() {
-        File file = new File("ReadWrite/ESCRITA/NORMAL/" + arquivo + "-EVENTOS.csv");
+        File file = new File("ReadWrite/" + arquivo + "-EVENTOS.csv");
         try {
             if (!file.exists()) {
                 file.createNewFile();

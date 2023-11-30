@@ -15,8 +15,8 @@ public class TipoAtendimento extends TypeAdapter<Atendimento> {
         out.name("codigo").value(at.getCodinome());
         out.name("dataInicio").value(at.getData());
         out.name("duracao").value(at.getDuracao());
-        out.name("status").value(at.getStatus());
         out.name("evento").value(at.getEvento().getCodigo());
+        if(at.getEquipeAlocada() != null) out.name("equipe").value(at.getEquipeAlocada().getCodinome());
         out.endObject();
     }
 

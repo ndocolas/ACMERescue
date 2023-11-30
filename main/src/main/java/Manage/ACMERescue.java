@@ -277,9 +277,11 @@ public class ACMERescue {
     }
     
     public String gravacaoNormalAtendimento() {
-        String retorno = "cod;dataInicio;duracao;status;codigo\n";
+        String retorno = "cod;dataInicio;duracao;status;codigo_evento;codigo_equipe\n";
         for(Atendimento at : listaAtendimento) {
-            retorno += String.format("%d;%s;%d;%s;%s%n", at.getCodinome(), at.getData(), at.getDuracao(), at.getStatus(), at.getEvento().getCodigo());
+            retorno += (at.getEquipeAlocada() == null) ? String.format("%d;%s;%d;%s%n", at.getCodinome(), at.getData(), at.getDuracao(), at.getEvento().getCodigo()) 
+            : 
+            String.format("%d;%s;%d;%s;%s%n", at.getCodinome(), at.getData(), at.getDuracao(), at.getEvento().getCodigo(), at.getEquipeAlocada().getCodinome());
         }
         return retorno;
     }

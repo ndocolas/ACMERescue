@@ -1993,9 +1993,9 @@ public class TelaPrincipalGUI extends JFrame {
             return;
         }
         if (LerNormal.isSelected()) {
-            new LeituraDeArquivos(jtfLeitura.getText(), acmeRescue);
+            new LeituraDeArquivos(jtfLeitura.getText(), acmeRescue, jtaSystemOut);
         } else if (LerJson.isSelected()) {
-            new LeituraDeArquivosJSON(jtfLeitura.getText(), acmeRescue);
+            new LeituraDeArquivosJSON(jtfLeitura.getText(), acmeRescue, jtaSystemOut);
         }
         jtaSystemOut.append("\nLeitura efetuada com sucesso!\n");
         grupoLeitura.clearSelection();

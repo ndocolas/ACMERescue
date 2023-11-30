@@ -19,8 +19,8 @@ public class Equipe {
         this.quantidade = quantidade;
         this.latitude = latitude;
         this.longitude = longitude;
-        listaEquipamentos = new ArrayList<>();
         isAlocada = false;
+        listaEquipamentos = new ArrayList<>();
     }
     
     public boolean getIsAlocada() {return isAlocada;}
@@ -50,9 +50,18 @@ public class Equipe {
     }
     
     public double calculaPrecoTotal(int duracao, double lat, double lon) {
-        return (250*duracao*quantidade) + (listaEquipamentos.stream().
-                mapToDouble(e->e.getCustoDia()).sum() * duracao) + (calculaDistancia(lat, lon) +
-                 (100 * quantidade * (0.1 * listaEquipamentos.stream().mapToDouble(e -> e.getCustoDia()).sum())));
+        double precoEquipamentos = (listaEquipamentos != null) ? somatorioListaEquipamentos() : 0;
+
+        return (250 * duracao * quantidade) + (precoEquipamentos + (calculaDistancia(lat, lon) +
+                 (100 * quantidade * (0.1 * precoEquipamentos))));
+    }
+
+    public double somatorioListaEquipamentos() {
+        double contador = 0;
+        for (Equipamento equipamento : listaEquipamentos) {
+            contador += equipamento.getCustoDia();
+        }
+        return contador;
     }
 
     public String getCodinome() {return codinome;}

@@ -10,6 +10,9 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
+
+import javax.swing.JTextArea;
+
 import Manage.ACMERescue;
 import Eventos.Tipos.Ciclone;
 import Eventos.Tipos.Seca;
@@ -20,25 +23,31 @@ import java.util.NoSuchElementException;
 public class LeituraDeArquivos {
     
     private ACMERescue acmeRescue;
-    private String nomeArquivo;
+    private String nomeArq;
+    private JTextArea jta;
 
-    public LeituraDeArquivos(String arquivo, ACMERescue acmerescue) {
+    public LeituraDeArquivos(String arquivo, ACMERescue acmerescue, JTextArea jta) {
         this.acmeRescue = acmerescue;
-        nomeArquivo=arquivo;
+        nomeArq=arquivo;
+        this.jta = jta;
         readAll();
     }
     
     private void readAll() {
         readEvento();
-        readAtendimento();
         readEquipe();
+        readAtendimento();
         readEquipamento();
     }
     
     private void readEvento() {
-        File arquivo = new File("ReadWrite/LEITURA/NORMAL/" + nomeArquivo + "-EVENTOS.csv");
+        File arquivo = new File("ReadWrite/" + nomeArq + "-EVENTOS.csv");
         
-        if(!arquivo.exists()) return;
+        if (!arquivo.exists()) {
+            jta.append("\nArquivo " + nomeArq + "-EVENTOS.csv inexistsente");
+            return;
+        }
+
         try(BufferedReader br = new BufferedReader(new FileReader(arquivo))){
             String linha;
             br.readLine();
@@ -68,16 +77,16 @@ public class LeituraDeArquivos {
                     System.out.println("Dados invalidos EVENTO");}
                 
             }
-        }catch(IOException | NoSuchElementException e) {
-            e.printStackTrace();
-        }
+        }catch(IOException | NoSuchElementException e) {}
     }
     
     private void readAtendimento() {
-        File arquivo = new File("ReadWrite/LEITURA/NORMAL/" +nomeArquivo + "-ATENDIMENTOS.csv");
+        File arquivo = new File("ReadWrite/" + nomeArq + "-ATENDIMENTOS.csv");
         
-        if (!arquivo.exists())return;
-        
+        if (!arquivo.exists()) {
+            jta.append("\nArquivo  " + nomeArq + "-ATENDIMENTOS.csv inexistsente");
+            return;
+        }
         try (BufferedReader br = new BufferedReader(new FileReader(arquivo))) {
             String linha;
             br.readLine();
@@ -87,22 +96,29 @@ public class LeituraDeArquivos {
                 int codigo = sc.nextInt();
                 String dataInicio = sc.next();
                 int duracao = sc.nextInt();
-                String status = sc.next();
                 String codigoEvento = sc.next();
+                if(sc.hasNext()) {
+                Equipe equipe = null;
+                try{
+                    equipe = acmeRescue.pesquisarCodigoEquipe(sc.next());
+                } catch(NullPointerException e1) {}
+                acmeRescue.adicionarAtendimento(new Atendimento(codigo, dataInicio, duracao, acmeRescue.pesquisarCodigoEvento(codigoEvento), equipe));
+                } else acmeRescue.adicionarAtendimento(new Atendimento(codigo, dataInicio, duracao, acmeRescue.pesquisarCodigoEvento(codigoEvento)));
+                     
                 
-                if(!acmeRescue.adicionarAtendimento(new Atendimento(codigo, dataInicio, duracao, status, acmeRescue.pesquisarCodigoEvento(codigoEvento))))
-                    System.out.println("Falha ao adicionar atendimento.");
                 sc.close();
-                } catch (InputMismatchException e) {}
+                } catch (InputMismatchException e) {e.printStackTrace();}
             }   
-        } catch(Exception e) {}
+        } catch(Exception e) {e.printStackTrace();}
     }
     
     private void readEquipamento() {
-        File arquivo = new File("ReadWrite/LEITURA/NORMAL/" +nomeArquivo + "-EQUIPAMENTOS.csv");
+        File arquivo = new File("ReadWrite/" + nomeArq + "-EQUIPAMENTOS.csv");
         
-        if (!arquivo.exists()) return;
-        
+        if (!arquivo.exists()) {
+            jta.append("\nArquivo  " + nomeArq + "-EQUIPAMENTOS.csv inexistsente");
+            return;
+        }
         try (BufferedReader br = new BufferedReader(new FileReader(arquivo))) {
             String linha;
             br.readLine();
@@ -134,9 +150,12 @@ public class LeituraDeArquivos {
     }
     
     private void readEquipe() {
-        File arquivo = new File("ReadWrite/LEITURA/NORMAL/" +nomeArquivo + "-EQUIPES.csv");
+        File arquivo = new File("ReadWrite/" + nomeArq + "-EQUIPES.csv");
         
-        if (!arquivo.exists())return;
+        if (!arquivo.exists()) {
+            jta.append("\nArquivo  " + nomeArq + "-EQUIPES.csv inexistsente");
+            return;
+        }
         try (BufferedReader br = new BufferedReader(new FileReader(arquivo))) {
             String linha;
             br.readLine();
@@ -144,7 +163,7 @@ public class LeituraDeArquivos {
                 Scanner sc = new Scanner(linha.trim()).useDelimiter("[;]");
                 try {
                 acmeRescue.adicionarEquipe(new Equipe(sc.next(), sc.nextInt(), sc.nextDouble(), sc.nextDouble()));
-                }   catch(InputMismatchException e) {}
+                } catch(InputMismatchException e) {}
                 sc.close();
             }
         } catch(Exception exception) {}

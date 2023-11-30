@@ -33,7 +33,7 @@ public class GravacaoDeArquivosJSON {
     
     private void escreverEquipeJson() {
         if(acme.retornaListaEquipe().isEmpty()) return;
-        File file = new File("ReadWrite/ESCRITA/JSON/" + nomeArquivo + "-EQUIPES-JSON.json");
+        File file = new File("ReadWrite/" + nomeArquivo + "-EQUIPES-JSON.json");
         try{if(!file.exists()) file.createNewFile();}catch(IOException e) {}
         
         Gson gson = new GsonBuilder()
@@ -49,7 +49,7 @@ public class GravacaoDeArquivosJSON {
     
     private void escreverAtendimentoJson() {
         if(acme.retornaListaAtendimento().isEmpty()) return;
-        File file = new File("ReadWrite/ESCRITA/JSON/" + nomeArquivo + "-ATENDIMENTOS-JSON.json");
+        File file = new File("ReadWrite/" + nomeArquivo + "-ATENDIMENTOS-JSON.json");
         try {if(!file.exists()) file.createNewFile();} catch (IOException e) {}
         Gson gson = new GsonBuilder().registerTypeAdapter(Atendimento.class, new TipoAtendimento()).create();
         String json = gson.toJson(acme.retornaListaAtendimento());
@@ -64,7 +64,7 @@ public class GravacaoDeArquivosJSON {
     
     private void escreverEquipamento() {
         if(acme.retornaListaEquipamento().isEmpty()) return;
-        File file = new File("ReadWrite/ESCRITA/JSON/" + nomeArquivo + "-EQUIPAMENTOS-JSON.json");
+        File file = new File("ReadWrite/" + nomeArquivo + "-EQUIPAMENTOS-JSON.json");
         try {
             if (!file.exists()) {
                 file.createNewFile();
@@ -88,7 +88,7 @@ public class GravacaoDeArquivosJSON {
     
     private void escreverEvento() {
         if(acme.retornaListaEvento().isEmpty()) return;
-        File file = new File("ReadWrite/ESCRITA/JSON/" + nomeArquivo + "-EVENTOS-JSON.json");
+        File file = new File("ReadWrite/" + nomeArquivo + "-EVENTOS-JSON.json");
         try {
             if (!file.exists()) {
                 file.createNewFile();
