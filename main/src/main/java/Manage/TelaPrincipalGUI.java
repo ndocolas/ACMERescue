@@ -45,6 +45,7 @@ public class TelaPrincipalGUI extends JFrame {
         super();
         this.acmeRescue = acmeRescue;
         setVisible(true);
+        setResizable(false);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         initComponents();
         runJTexArea();

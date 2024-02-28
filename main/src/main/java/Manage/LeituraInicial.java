@@ -29,6 +29,7 @@ public class LeituraInicial extends JFrame {
         super();
         this.acmeRescue = acmeRescue;
         setVisible(true);
+        setResizable(false);
         initComponents();
     }
 
