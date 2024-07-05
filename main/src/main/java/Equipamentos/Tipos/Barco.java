@@ -12,10 +12,9 @@ public class Barco extends Equipamento {
         this.capacidade = capacidade;
     }
 
-    public int getCapacidade() {return capacidade;}
-
     @Override
     public String getInfo() { return super.getId() + " B";}
+    public int getCapacidade() {return capacidade;}
 
     @Override
     public String getDescricao() {

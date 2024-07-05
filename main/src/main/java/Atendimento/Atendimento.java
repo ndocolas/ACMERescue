@@ -31,43 +31,22 @@ public class Atendimento {
         equipeAlocada = null;
     }
 
-    public String getStatus() {
-        return status;
+    private void desalocarEquipe(String status) {
+         if (equipeAlocada != null) {
+            equipeAlocada.setIsAlocada(false);
+            equipeAlocada = null;
+            this.status = status;
+        }
     }
+
 
     public void alterarStatus(String status) {
         switch (status.toUpperCase()) {
-            case "PENDENTE" -> {
-                if (equipeAlocada != null) {
-                    equipeAlocada.setIsAlocada(false);
-                    equipeAlocada = null;
-                }
-                this.status = status;
-                break;
-            }
-            case "EXECUTANDO" -> {
-                this.status = status;
-                break;
-            }
-            case "FINALIZADO" -> {
-                if (equipeAlocada != null) {
-                    equipeAlocada.setIsAlocada(false);
-                    equipeAlocada = null;
-                }
-                this.status = status;
-                break;
-            }
-            case "CANCELADO" -> {
-                if (equipeAlocada != null) {
-                    equipeAlocada.setIsAlocada(false);
-                    equipeAlocada = null;
-                }
-                this.status = status;
-                break;
-            }
-            default -> {
-                return;
-            }
+            case "PENDENTE": desalocarEquipe(status);
+            case "FINALIZADO": desalocarEquipe(status);
+            case "CANCELADO": desalocarEquipe(status);
+            case "EXECUTANDO": 
+            default: return;
         }
     }
 
@@ -80,28 +59,15 @@ public class Atendimento {
         return false;
     }
 
-    public Equipe getEquipeAlocada() {
-        return equipeAlocada;
-    }
-
-    public int getCodinome() {
-        return codigo;
-    }
-
-    public String getData() {
-    return dataInicio;
-    }   
-
-    public int getDuracao() {
-    return duracao;
-    }
-
-    public Evento getEvento() {
-    return evento;
-    }
+    public Equipe getEquipeAlocada() {return equipeAlocada;}    
+    public int getCodinome() {return codigo;}   
+    public String getData() {return dataInicio;}    
+    public int getDuracao() {return duracao;}   
+    public Evento getEvento() {return evento;}
+    public String getStatus() {return status;}
 
     public String getEquipeDescricao() {
-        return (equipeAlocada == null) ? "Nenhuma equipe alocada\n" : equipeAlocada.getDescricao();
+        return (equipeAlocada == null) ? "Nenhuma equipe alocada\n" :  equipeAlocada.getDescricao();
     }
 
     public double calculaPrecoAtendimento() {
@@ -109,19 +75,18 @@ public class Atendimento {
     }
 
     public String getDescricao() {
-        return (equipeAlocada == null) ? "Codigo: " + codigo
-                + "\nData: " + dataInicio
-                + "\nDuracao: " + duracao + " dias"
-                + "\nStatus: " + status
-                + "\nEvento: " + evento.getDescricao()
-                + "\nCusto Total: Atendimento sem equipe"
-                : "Codigo: " + codigo
-                        + "\nData: " + dataInicio
-                        + "\nDuracao: " + duracao + " dias"
-                        + "\nStatus: " + status
-                        + "\nEvento: " + evento.getDescricao()
-                        + "\nCusto Total: " + String.format("%.2f", calculaPrecoAtendimento())
-                        + "\nEquipe: " + equipeAlocada.getDescricao();
-
+        return (equipeAlocada == null) ? "Codigo:  " + codigo
+                + "\nData:  " + dataInicio
+                + "\nDuracao:  " + duracao + " dias"
+                + "\nStatus:  " + status
+                + "\nEvento:  " + evento.getDescricao()
+                + "\nCusto Total:  Atendimento sem equipe"
+                :  "Codigo:  " + codigo
+                + "\nData:  " + dataInicio
+                + "\nDuracao:  " + duracao + " dias"
+                + "\nStatus:  " + status
+                + "\nEvento:  " + evento.getDescricao()
+                + "\nCusto Total:  " + String.format("%.2f", calculaPrecoAtendimento())
+                + "\nEquipe:  " + equipeAlocada.getDescricao();
     }
 }

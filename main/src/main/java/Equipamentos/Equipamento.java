@@ -7,7 +7,7 @@ public abstract class Equipamento {
 	private int id;
 	private String nome;
 	private double custoDia;
-        private Equipe equipe;
+    private Equipe equipe;
 
 	public Equipamento(int id, String nome, double custoDia, Equipe equipe) {
 		this.id = id;

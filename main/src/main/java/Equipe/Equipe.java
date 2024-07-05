@@ -2,6 +2,7 @@ package Equipe;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.stream.Collectors;
 
 import Equipamentos.Equipamento;
 
@@ -57,11 +58,7 @@ public class Equipe {
     }
 
     public double somatorioListaEquipamentos() {
-        double contador = 0;
-        for (Equipamento equipamento : listaEquipamentos) {
-            contador += equipamento.getCustoDia();
-        }
-        return contador;
+        return listaEquipamentos.stream().mapToDouble(Equipamento::getCustoDia).sum();
     }
 
     public String getCodinome() {return codinome;}
@@ -78,10 +75,9 @@ public class Equipe {
     
     public String equipamentosEquipeToString() {
         listaEquipamentos.sort(Comparator.comparingInt(e -> e.getId()));
-        String fim = "";
-        for (Equipamento equipamento : listaEquipamentos) {
-            fim += equipamento.getDescricao();
-        }
-        return fim = (listaEquipamentos.isEmpty()) ? " Lista vazia" : fim;
+        return (listaEquipamentos.isEmpty()) ? 
+        "Lista vazia" 
+        : 
+        listaEquipamentos.stream().map(e -> e.getDescricao()).collect(Collectors.toList()).toString();
     }
 }

@@ -14,11 +14,10 @@ public class Escavadeira extends Equipamento {
 		this.carga = carga;
 	}
 
-    public String getCombustivel() {return combustivel;}
-    public double getCarga() {return carga;}
-        
 	@Override
 	public String getInfo() {return super.getId() + " E";}
+    public String getCombustivel() {return combustivel;}
+    public double getCarga() {return carga;}   
 
 	@Override
 	public String getDescricao() {

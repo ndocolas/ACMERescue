@@ -10,12 +10,11 @@ public class CaminhaoTanque extends Equipamento {
 	public CaminhaoTanque(int id, String nome, double custoDia, double capacidade, Equipe equipe) {
         super(id, nome, custoDia, equipe);
 		this.capacidade = capacidade;
-	}
-        
-    public double getCapacidade() {return capacidade;}
+	}        
 
 	@Override
 	public String getInfo() {return super.getId() + " C";}
+    public double getCapacidade() {return capacidade;}
 
 	@Override
 	public String getDescricao() {
@@ -24,6 +23,6 @@ public class CaminhaoTanque extends Equipamento {
 				"\n   Nome: " + super.getNome() +
 				"\n   Custo Diario: " + super.getCustoDia() +
 				"\n   Capacidade: " + capacidade+
-                                "\n   Equipe: " + super.getEquipe().getCodinome() + "\n";
+                "\n   Equipe: " + super.getEquipe().getCodinome() + "\n";
 	}
 }
