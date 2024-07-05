@@ -3,7 +3,9 @@ package Manage;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Queue;
+import java.util.stream.Collectors;
 
 import Atendimento.Atendimento;
 import Equipamentos.Equipamento;
@@ -15,7 +17,6 @@ import Eventos.Evento;
 import Eventos.Tipos.Ciclone;
 import Eventos.Tipos.Seca;
 import Eventos.Tipos.Terremoto;
-import java.util.stream.Collectors;
 
 public class ACMERescue {
     
@@ -33,10 +34,9 @@ public class ACMERescue {
 
     //EQUIPE-----------------------
     public boolean adicionarEquipe(Equipe equipe) {
-        if (equipe == null)return false;
-        for (Equipe var : listaEquipe) {
-            if (equipe.getCodinome().equals(var.getCodinome())) return false;
-        }
+        if(Objects.isNull(equipe) || 
+        listaEquipe.stream().anyMatch(e -> equipe.getCodinome().equals(e.getCodinome()))) 
+        {return false;}
         return listaEquipe.add(equipe);
     } 
     
@@ -50,35 +50,26 @@ public class ACMERescue {
 
     //EVENTO-----------------------
     public boolean adicionarEvento(Evento evento) {
-        if(evento==null) return false;
-        for(Evento e : listaEvento) {
-            if(evento.getCodigo().equals(e.getCodigo())) return false;
-        }
+        if(Objects.isNull(evento) ||
+        listaEvento.stream().anyMatch(e -> evento.getCodigo().equals(e.getCodigo()))) {return false;}
         return listaEvento.add(evento);
     }  
 
     //ATENDIMENTO---------------------   
     public boolean adicionarAtendimento(Atendimento atendimento) {
-        if(atendimento == null || atendimento.getEvento() == null) return false;
-        for (Atendimento att : listaAtendimento) {
-            if(atendimento.getCodinome() == att.getCodinome() ||
-            atendimento.getEvento().equals(att.getEvento())) return false;
-        }
+        if(atendimento == null || atendimento.getEvento() == null ||
+        listaAtendimento.stream().anyMatch(at -> atendimento.getCodinome() == at.getCodinome())) return false;
         return listaAtendimento.add(atendimento);
     }
 
     public Atendimento pesquisarCodigoAtendimento(int codigo) {
-        for (Atendimento atendimento : listaAtendimento) {
-            if(codigo == atendimento.getCodinome()) return atendimento;
-        }
-        return null;
+        return listaAtendimento.stream().filter(at -> codigo == at.getCodinome()).findFirst().orElse(null);
     }
 
     public void alocacaoAutomatica() {
         if (listaAtendimento.isEmpty() || listaEquipe.isEmpty()) return;
         for (Atendimento at : listaAtendimento) {
-            if(at.getStatus().equals("CANCELADO") || at.getStatus().equals("FINALIZADO")) continue;
-            if(at.getEquipeAlocada() != null) continue;
+            if(at.getStatus().equals("CANCELADO") || at.getStatus().equals("FINALIZADO") || at.getEquipeAlocada() != null) continue;
             boolean cancelar = true;
             for (Equipe e : listaEquipe) {
                 if(e.getIsAlocada()) continue;
@@ -100,18 +91,12 @@ public class ACMERescue {
     //EQUIPAMENTOS----------------------
     
     public boolean adicionarEquipamento(Equipamento equipamento) {
-        if(equipamento == null) return false;
-        for (Equipamento e : listaEquipamento) {
-            if(equipamento.getId() == e.getId()) return false;
-        }
+        if(Objects.isNull(equipamento) || listaEquipamento.stream().anyMatch(e -> equipamento.getId() == e.getId())) return false;
         return listaEquipamento.add(equipamento);
     }
     
     public Equipamento pesquisarCodigoEquipamento(int codigo) {
-        for (Equipamento equipamento : listaEquipamento) {
-            if(codigo==equipamento.getId()) return equipamento;
-        }          
-        return null;
+        return listaEquipamento.stream().filter(e -> codigo == e.getId()).findFirst().orElse(null);
     }
 
     //GERAL-----------------------
@@ -119,7 +104,8 @@ public class ACMERescue {
     public String mostrarRelatorio() {
         return (listaEquipamento.isEmpty() && listaEquipe.isEmpty()
                 && listaAtendimento.isEmpty() && listaEvento.isEmpty())
-                ? "Nenhum dado cadastrado." : mostrarTodasEquipes()
+                ? "Nenhum dado cadastrado." : 
+                mostrarTodasEquipes()
                 + mostrarTodosEquipamentos()
                 + mostrarTodosEventos()
                 + mostrarTodosAtendimentos();
