@@ -21,12 +21,7 @@ public class Escavadeira extends Equipamento {
 
 	@Override
 	public String getDescricao() {
-		return "\n   Tipo: Escavadeira" +
-				"\n   ID: " + super.getId() +
-				"\n   Nome: " + super.getNome() +
-				"\n   Custo Diario: " + super.getCustoDia() +
-				"\n   Tipo de Combustivel: " + combustivel.toUpperCase() +
-				"\n   Carga: " + carga +
-                                "\n   Equipe: " + super.getEquipe().getCodinome() + "\n";
+		return String.format("Tipo: Escavadeira  ID: %d    Nome: %s    Custo Diario: %.2f    Tipo de Combustivel: %s    Carga: %.2f    Equipe: %s",
+				super.getId(), super.getNome(), super.getCustoDia(), combustivel.toUpperCase(), carga, super.getEquipe().getCodinome());
 	}
 }

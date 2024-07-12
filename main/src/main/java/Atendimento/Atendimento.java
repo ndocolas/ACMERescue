@@ -45,7 +45,6 @@ public class Atendimento {
             case "PENDENTE": desalocarEquipe(status);
             case "FINALIZADO": desalocarEquipe(status);
             case "CANCELADO": desalocarEquipe(status);
-            case "EXECUTANDO": 
             default: return;
         }
     }
@@ -75,18 +74,9 @@ public class Atendimento {
     }
 
     public String getDescricao() {
-        return (equipeAlocada == null) ? "Codigo:  " + codigo
-                + "\nData:  " + dataInicio
-                + "\nDuracao:  " + duracao + " dias"
-                + "\nStatus:  " + status
-                + "\nEvento:  " + evento.getDescricao()
-                + "\nCusto Total:  Atendimento sem equipe"
-                :  "Codigo:  " + codigo
-                + "\nData:  " + dataInicio
-                + "\nDuracao:  " + duracao + " dias"
-                + "\nStatus:  " + status
-                + "\nEvento:  " + evento.getDescricao()
-                + "\nCusto Total:  " + String.format("%.2f", calculaPrecoAtendimento())
-                + "\nEquipe:  " + equipeAlocada.getDescricao();
+        return (equipeAlocada == null) ? 
+        String.format("Codigo: %d%nData: %s%nDuracao: %d dias%nStatus: %s%nEvento: %s%nCusto Total: Atendimento sem equipe", codigo, dataInicio, duracao, status, evento.getDescricao())
+        :  
+        String.format("Codigo: %d%nData: %s%nDuracao: %d dias%nStatus: %s%nEvento: %s%nCusto Total: %.2f%nEquipe: %s%n", codigo, dataInicio, duracao, status, evento.getDescricao(), calculaPrecoAtendimento(), equipeAlocada.getDescricao());
     }
 }

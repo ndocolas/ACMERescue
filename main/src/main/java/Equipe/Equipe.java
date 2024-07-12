@@ -65,14 +65,9 @@ public class Equipe {
     public int getQuantidade() {return quantidade;}
     public double getLatitude() {return latitude;}
     public double getLongitude() {return longitude;}
-
-    public String getDescricao() {
-        return "\n   Codinome: " + codinome
-                + "\n   Quantidade: " + quantidade
-                + "\n   Latitude: " + latitude
-                + "\n   Longitude: " + longitude + "\n";
-    }
     
+    public String getDescricao(){return String.format("%nCodinome: %s %nQuantidade: %d    %nLatitude: %.2f    %nLongitude: %.2%n", codinome, quantidade, latitude, longitude);}
+
     public String equipamentosEquipeToString() {
         listaEquipamentos.sort(Comparator.comparingInt(e -> e.getId()));
         return (listaEquipamentos.isEmpty()) ? 

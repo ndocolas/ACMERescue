@@ -151,11 +151,9 @@ public class LeituraInicial extends JFrame {
             jtaSaida.append("\nDados incompletos.\n");
             return;
         }
-        if(jbJSON.isSelected()) {
-            new LeituraDeArquivosJSON(jtfLeitura.getText(), acmeRescue, jtaSaida);
-        } else if(jbNORMAL.isSelected()) {
-            new LeituraDeArquivos(jtfLeitura.getText(), acmeRescue, jtaSaida);
-        }
+        if(jbJSON.isSelected()) new LeituraDeArquivosJSON(jtfLeitura.getText(), acmeRescue, jtaSaida);
+        else if(jbNORMAL.isSelected()) new LeituraDeArquivos(jtfLeitura.getText(), acmeRescue, jtaSaida);
+        
         if(acmeRescue.mostrarRelatorio().equals("Nenhum dado cadastrado.")) {
         jtaSaida.append("\nDados invalidos.\n");
         return;
